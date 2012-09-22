@@ -29,10 +29,10 @@
     <RegExp input="$$4" output="&lt;results&gt;\1&lt;/results&gt;" dest="4">
       <RegExp conditional="Google" input="$$4" output="\1" dest="4">
         <RegExp conditional="Google" input="$$1" output="&lt;url function=&quot;GetSearchResultsExt&quot; gzip=&quot;yes&quot; cache=&quot;\1.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=\1&lt;/url&gt;" dest="4">
-          <expression clear="yes" repeat="yes">(?i)&lt;a href=&quot;http://anidb\.net/perl-bin/animedb\.pl\?show=anime&amp;amp;aid=(\d+)&quot;</expression>
+          <expression clear="yes" repeat="yes">(?i)&lt;cite&gt;anidb\.net/perl-bin/animedb\.pl\?show=anime&amp;amp;aid=(\d+)&lt;/cite&gt;</expression>
         </RegExp>
         <RegExp conditional="Google" input="$$1" output="&lt;url function=&quot;GetSearchResultsExt&quot; gzip=&quot;yes&quot; cache=&quot;\1.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=\1&lt;/url&gt;" dest="4+">
-          <expression repeat="yes">(?i)&lt;a href=&quot;http://anidb\.net/a(\d+)&quot;</expression>
+          <expression repeat="yes">(?i)&lt;cite&gt;anidb\.net/a(\d+)&lt;/cite&gt;</expression>
         </RegExp>
         <expression noclean="1"/>
       </RegExp> 
