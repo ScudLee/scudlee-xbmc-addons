@@ -52,6 +52,12 @@
         <RegExp input="$$1" output="&lt;entity&gt;&lt;title&gt;Anidb Search : A\1 ~ \2&lt;/title&gt;&lt;url gzip=&quot;yes&quot; cache=&quot;\1.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=\1&lt;/url&gt;&lt;id&gt;\1&lt;/id&gt;&lt;year&gt;\3&lt;/year&gt;&lt;/entity&gt;" dest="5+">
           <expression repeat="yes" trim="2">&lt;anime aid=&quot;(\d+)&quot;&gt;(?:[^&lt;]*&lt;title[^&lt;]+&lt;/title&gt;)*[^&lt;]*&lt;title\s+type=&quot;syn&quot;\s+xml:lang=&quot;x-jat&quot;[^&gt;]*&gt;([^&lt;]*$$6?(?:\(((?:19|20)\d\d)\))?)&lt;/title&gt;</expression>
         </RegExp>
+        <RegExp input="$$5" output="\1" dest="5">
+          <RegExp input="$$5" output="'\1" dest="5">
+            <expression clear="yes" repeat="yes" noclean="1">`?([^`]*)</expression>
+          </RegExp>
+          <expression noclean="1">'(.*)'</expression>
+        </RegExp>
         <expression noclean="1"/>
       </RegExp>
       <RegExp input="" output="" dest="1">
