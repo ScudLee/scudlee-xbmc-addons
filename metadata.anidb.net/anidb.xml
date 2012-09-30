@@ -960,6 +960,30 @@
       <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
         <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;2&quot;&gt;s(\d+)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
       </RegExp>
+      <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;10\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;3&quot;&gt;c(\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
+      </RegExp>
+      <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;1\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;3&quot;&gt;c(\d\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
+      </RegExp>
+      <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;20\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;4&quot;&gt;t(\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
+      </RegExp>
+      <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;2\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;4&quot;&gt;t(\d\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
+      </RegExp>
+      <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;30\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;5&quot;&gt;p(\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
+      </RegExp>
+      <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;3\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;5&quot;&gt;p(\d\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
+      </RegExp>
+      <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;40\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;6&quot;&gt;o(\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
+      </RegExp>
+      <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;4\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;6&quot;&gt;o(\d\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
+      </RegExp>
       <expression noclean="1"/>
     </RegExp>
   </GetEpisodeList>
@@ -987,6 +1011,30 @@
       <RegExp input="$$5" output="0-\1" dest="9">
         <expression>(?i)&lt;epno[^&gt;]*&gt;s(\d+)&lt;/epno&gt;</expression>
       </RegExp>
+      <RegExp input="$$5" output="0-10\1" dest="9">
+        <expression>(?i)&lt;epno[^&gt;]*&gt;c(\d)&lt;/epno&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="0-1\1" dest="9">
+        <expression>(?i)&lt;epno[^&gt;]*&gt;c(\d\d)&lt;/epno&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="0-20\1" dest="9">
+        <expression>(?i)&lt;epno[^&gt;]*&gt;t(\d)&lt;/epno&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="0-2\1" dest="9">
+        <expression>(?i)&lt;epno[^&gt;]*&gt;t(\d\d)&lt;/epno&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="0-30\1" dest="9">
+        <expression>(?i)&lt;epno[^&gt;]*&gt;p(\d)&lt;/epno&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="0-3\1" dest="9">
+        <expression>(?i)&lt;epno[^&gt;]*&gt;p(\d\d)&lt;/epno&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="0-40\1" dest="9">
+        <expression>(?i)&lt;epno[^&gt;]*&gt;o(\d)&lt;/epno&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="0-4\1" dest="9">
+        <expression>(?i)&lt;epno[^&gt;]*&gt;o(\d\d)&lt;/epno&gt;</expression>
+      </RegExp>
       <RegExp input="$$9" output="\1" dest="19">
         <expression clear="yes">(\d+)-\d+</expression>
       </RegExp>
@@ -996,11 +1044,14 @@
       <RegExp input="$$19" output="&lt;season&gt;$$19&lt;/season&gt;&lt;episode&gt;$$18&lt;/episode&gt;" dest="4+">
         <expression/>
       </RegExp>
-      <RegExp conditional="SpecialsAtEnd" input="$$19" output="&lt;displayseason&gt;2&lt;/displayseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
-        <expression>0</expression>
+      <RegExp input="$$19-$$18" output="&lt;displayseason&gt;2&lt;/displayseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
+        <expression>0-\d{3}</expression>
       </RegExp>
-      <RegExp conditional="!SpecialsAtEnd" input="$$19" output="&lt;displayseason&gt;0&lt;/displayseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
-        <expression>0</expression>
+      <RegExp conditional="SpecialsAtEnd" input="$$19-$$18" output="&lt;displayseason&gt;2&lt;/displayseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
+        <expression>0-(?!\d{3})</expression>
+      </RegExp>
+      <RegExp conditional="!SpecialsAtEnd" input="$$19-$$18" output="&lt;displayseason&gt;0&lt;/displayseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
+        <expression>0-(?!\d{3})</expression>
       </RegExp>
       <RegExp input="$$5" output="&lt;runtime&gt;\1&lt;/runtime&gt;" dest="4+">
         <expression>(?i)&lt;length&gt;(\d+)&lt;/length&gt;</expression>
