@@ -14,7 +14,7 @@
       </RegExp>
       <expression clear="yes" noclean="1"/>
     </RegExp> 
-    <RegExp conditional="!Google" input="$$1" output="&lt;url gzip=&quot;yes&quot; cache=&quot;anidb.xml&quot;&gt;$INFO[AnimeListUrl]&lt;/url&gt;" dest="4">
+    <RegExp conditional="!Google" input="$$1" output="&lt;url gzip=&quot;yes&quot; cache=&quot;animetitles.xml&quot;&gt;$INFO[AnimeListUrl]&lt;/url&gt;" dest="4">
       <RegExp input="$$1" output="\1" dest="18">
         <expression clear="yes"/>
       </RegExp>
