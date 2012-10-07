@@ -530,8 +530,14 @@
       <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\3&lt;/name&gt;&lt;role&gt;\1&lt;/role&gt;&lt;thumb&gt;http://img7.anidb.net/pics/anime/\2&lt;/thumb&gt;&lt;/actor&gt;" dest="16">
         <expression clear="yes" repeat="yes">(?i)&lt;character.*?type=&quot;main character in&quot;[^&gt;]*&gt;.*?&lt;name&gt;([^&lt;]*)&lt;/name&gt;.*?&lt;seiyuu[^&gt;]*picture=&quot;([^&quot;]*)&quot;[^&gt;]*&gt;([^&lt;]*)&lt;/seiyuu&gt;.*?&lt;/character&gt;</expression>
       </RegExp>
+      <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;role&gt;\1&lt;/role&gt;&lt;/actor&gt;" dest="16+">
+        <expression repeat="yes">(?i)&lt;character.*?type=&quot;main character in&quot;[^&gt;]*&gt;.*?&lt;name&gt;([^&lt;]*)&lt;/name&gt;.*?&lt;seiyuu[^&gt;]*&gt;([^&lt;]*)&lt;/seiyuu&gt;.*?&lt;/character&gt;</expression>
+      </RegExp>
       <RegExp conditional="SecondAsMain" input="$$6" output="&lt;actor&gt;&lt;name&gt;\3&lt;/name&gt;&lt;role&gt;\1&lt;/role&gt;&lt;thumb&gt;http://img7.anidb.net/pics/anime/\2&lt;/thumb&gt;&lt;/actor&gt;" dest="16+">
         <expression repeat="yes">(?i)&lt;character.*?type=&quot;secondary cast in&quot;[^&gt;]*&gt;.*?&lt;name&gt;([^&lt;]*)&lt;/name&gt;.*?&lt;seiyuu[^&gt;]*picture=&quot;([^&quot;]*)&quot;[^&gt;]*&gt;([^&lt;]*)&lt;/seiyuu&gt;.*?&lt;/character&gt;</expression>
+      </RegExp>
+      <RegExp conditional="SecondAsMain" input="$$6" output="&lt;actor&gt;&lt;name&gt;\2&lt;/name&gt;&lt;role&gt;\1&lt;/role&gt;&lt;/actor&gt;" dest="16+">
+        <expression repeat="yes">(?i)&lt;character.*?type=&quot;secondary cast in&quot;[^&gt;]*&gt;.*?&lt;name&gt;([^&lt;]*)&lt;/name&gt;.*?&lt;seiyuu[^&gt;]*&gt;([^&lt;]*)&lt;/seiyuu&gt;.*?&lt;/character&gt;</expression>
       </RegExp>
       <RegExp input="$$17" output="\1" dest="16+">
         <expression noclean="1" repeat="yes">(?i)(&lt;actor&gt;.*?&lt;/actor&gt;)</expression>
@@ -1068,8 +1074,14 @@
       <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\6&lt;/name&gt;&lt;role&gt;\2&lt;/role&gt;&lt;thumb&gt;http://img7.anidb.net/pics/anime/\5&lt;/thumb&gt;&lt;/actor&gt;" dest="7">
         <expression clear="yes" repeat="yes">(?i)&lt;character[^&gt;]*type=&quot;appears in&quot;[^&gt;]*&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\1&gt;\s*)*?&lt;name&gt;([^&lt;]*)&lt;/name&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;episodes[^&lt;]*[&gt;,]$$3[&lt;,][^/]*/episodes&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;seiyuu[^&gt;]*picture=&quot;([^&quot;]*)&quot;[^&gt;]*&gt;([^&lt;]*)&lt;/seiyuu&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\7&gt;\s*)*?&lt;/character&gt;</expression>
       </RegExp>
+      <RegExp input="$$6" output="&lt;actor&gt;&lt;name&gt;\5&lt;/name&gt;&lt;role&gt;\2&lt;/role&gt;&lt;/actor&gt;" dest="7+">
+        <expression repeat="yes">(?i)&lt;character[^&gt;]*type=&quot;appears in&quot;[^&gt;]*&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\1&gt;\s*)*?&lt;name&gt;([^&lt;]*)&lt;/name&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;episodes[^&lt;]*[&gt;,]$$3[&lt;,][^/]*/episodes&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;seiyuu[^&gt;]*&gt;([^&lt;]*)&lt;/seiyuu&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\6&gt;\s*)*?&lt;/character&gt;</expression>
+      </RegExp>
       <RegExp conditional="!SecondAsMain" input="$$6" output="&lt;actor&gt;&lt;name&gt;\6&lt;/name&gt;&lt;role&gt;\2&lt;/role&gt;&lt;thumb&gt;http://img7.anidb.net/pics/anime/\5&lt;/thumb&gt;&lt;/actor&gt;" dest="7+">
         <expression repeat="yes">(?i)&lt;character[^&gt;]*type=&quot;secondary cast in&quot;[^&gt;]*&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\1&gt;\s*)*?&lt;name&gt;([^&lt;]*)&lt;/name&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;episodes[^&lt;]*[&gt;,]$$3[&lt;,][^/]*/episodes&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;seiyuu[^&gt;]*picture=&quot;([^&quot;]*)&quot;[^&gt;]*&gt;([^&lt;]*)&lt;/seiyuu&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\7&gt;\s*)*?&lt;/character&gt;</expression>
+      </RegExp>
+      <RegExp conditional="!SecondAsMain" input="$$6" output="&lt;actor&gt;&lt;name&gt;\5&lt;/name&gt;&lt;role&gt;\2&lt;/role&gt;&lt;/actor&gt;" dest="7+">
+        <expression repeat="yes">(?i)&lt;character[^&gt;]*type=&quot;secondary cast in&quot;[^&gt;]*&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\1&gt;\s*)*?&lt;name&gt;([^&lt;]*)&lt;/name&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;episodes[^&lt;]*[&gt;,]$$3[&lt;,][^/]*/episodes&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;seiyuu[^&gt;]*&gt;([^&lt;]*)&lt;/seiyuu&gt;\s*(?:&lt;([^&gt;\s]+)[^&gt;]*&gt;[^&lt;]*&lt;/\6&gt;\s*)*?&lt;/character&gt;</expression>
       </RegExp>
       <RegExp input="$$7" output="\1" dest="4+">
         <RegExp input="$$7" output="'\1" dest="7">
