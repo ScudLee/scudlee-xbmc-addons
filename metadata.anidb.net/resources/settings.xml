@@ -10,8 +10,8 @@
     <setting label="30004" type="text" id="PersonalAnimeMappingUrl" default="http://localhost/pers-anime-list.xml" enable="eq(-1,true)"/>
   </category>
   <category label="AniDB">
-    <setting label="30100" type="bool" id="OfficalName" default="false"/>
-    <setting label="30101" type="labelenum" id="OfficalLanguage" values="en|de|fr|it|cs|sk|hu|pl|ru|ja|zh" default="en" enable="eq(-1,true)"/>
+    <setting label="30100" type="bool" id="OfficialName" default="false"/>
+    <setting label="30101" type="labelenum" id="OfficialLanguage" values="en|de|fr|it|cs|sk|hu|pl|ru|ja|zh" default="en" enable="eq(-1,true)"/>
     <setting label="30110" type="labelenum" id="RatingType" values="Average|Weighted" default="Average"/>
     <setting type="sep"/>
     <setting label="30102" type="bool" id="Prequels" default="true"/>
