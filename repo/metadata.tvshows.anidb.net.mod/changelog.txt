@@ -1,0 +1,11 @@
+1.0.0:
+(Changes from official anidb.net scraper 2.0.0)
+Changed: Default locations of anime lists
+Changed: Handling of Main/Secondary/"Appears in" cast altered to better match tvdb scraper
+Added: Support for treating OPs/EDs, trailers, etc. as specials (requires Frodo)
+Added: Support for retrieving fanart from themoviedb.org
+Added: Support for shows distinguished by a year in brackets
+Fixed: Cast without pictures were being ignored
+Fixed: Shows distinguished by a final apostrophe now match correctly (e.g. Gintama')
+Fixed: Some punctuation marks are no longer being percent-encoded
+Fixed: Google search results parsed correctly again

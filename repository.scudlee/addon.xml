@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.scudlee"
+       name="ScudLee's XBMC Addon Repository"
+       version="1.0.0"
+       provider-name="scudlee">
+  <extension point="xbmc.addon.repository" 
+             name="ScudLee's XBMC Addon Repository">
+    <info compressed="false">https://github.com/ScudLee/scudlee-xbmc-addons/raw/master/addons.xml</info>
+    <checksum>https://github.com/ScudLee/scudlee-xbmc-addons/raw/master/addons.xml.md5</checksum>
+    <datadir zip="true">https://github.com/ScudLee/scudlee-xbmc-addons/raw/master/repo/</datadir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Add-ons from ScudLee's Repository</summary>
+    <description>AniDB.net scraper mods for XBMC</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
