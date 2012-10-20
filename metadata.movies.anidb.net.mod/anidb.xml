@@ -857,8 +857,8 @@
 
   <GetFanartDataReturnAPI clearbuffers="no" dest="4">
     <RegExp input="$$6$$15&lt;fanart&gt;$$16&lt;/fanart&gt;" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
-      <RegExp input="$INFO[IdFrom]-$$19" output="&lt;id&gt;\1&lt;/id&gt;" dest="6">
-        <expression clear="yes">TheTVDB\.com-(\d+)</expression>
+      <RegExp input="$INFO[IdFrom]-$$12" output="&lt;id&gt;\1&lt;/id&gt;" dest="6">
+        <expression clear="yes">IMDB\.com-((?:tt)\d+)</expression>
       </RegExp>
       <RegExp input="" output="" dest="1">
         <expression clear="yes"/>
