@@ -1053,10 +1053,10 @@
       <RegExp input="$$19-$$18" output="&lt;displayseason&gt;2&lt;/displayseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
         <expression>0-\d{3}</expression>
       </RegExp>
-      <RegExp conditional="SpecialsAtEnd" input="$$19-$$18" output="&lt;displayseason&gt;2&lt;/displayseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
+      <RegExp conditional="SpecialsAtEnd" input="$$19-$$18" output="&lt;displayafterseason&gt;1&lt;/displayafterseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
         <expression>0-(?!\d{3})</expression>
       </RegExp>
-      <RegExp conditional="!SpecialsAtEnd" input="$$19-$$18" output="&lt;displayseason&gt;0&lt;/displayseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
+      <RegExp conditional="!SpecialsAtEnd" input="$$19-$$18" output="&lt;displaybeforeseason&gt;1&lt;/displaybeforeseason&gt;&lt;displayepisode&gt;$$18&lt;/displayepisode&gt;" dest="4+">
         <expression>0-(?!\d{3})</expression>
       </RegExp>
       <RegExp input="$$5" output="&lt;runtime&gt;\1&lt;/runtime&gt;" dest="4+">
