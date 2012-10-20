@@ -24,10 +24,6 @@
     <setting label="30104" type="bool" id="SingleStudio" default="true"/>
   </category>
   <category label="TheTVDB">
-    <setting label="30204" type="bool" id="Posters" default="true"/>
-    <setting label="30201" type="bool" id="Banners" default="false"/>
-    <setting label="30205" type="labelenum" id="PostersOrder" values="Posters first|Banners first" default="Posters first" enable="eq(-1,true)+eq(-2,true)"/>
-    <setting type="sep"/>
   	<setting label="30200" type="bool" id="Fanarts" default="true"/>
     <setting label="30202" type="bool" id="NoFanartContinue" default="true" enable="eq(-1,true)"/>
   </category>

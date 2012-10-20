@@ -645,13 +645,13 @@
       <RegExp input="" output="" dest="15">
         <expression clear="yes"/>
       </RegExp>
-      <RegExp conditional="Posters" input="$$1" output="&lt;thumb aspect=&quot;poster&quot;&gt;http://img7.anidb.net/pics/anime/\1&lt;/thumb&gt;" dest="15">
+      <RegExp input="$$1" output="&lt;thumb aspect=&quot;poster&quot;&gt;http://img7.anidb.net/pics/anime/\1&lt;/thumb&gt;" dest="15">
         <expression>(?i)&lt;picture&gt;([^&lt;]+)&lt;/picture&gt;</expression>
       </RegExp>
-      <RegExp conditional="Posters" input="$$17" output="\1" dest="15+">
+      <RegExp  input="$$17" output="\1" dest="15+">
         <expression noclean="1" repeat="yes">(?i)(&lt;thumb&gt;.*?&lt;/thumb&gt;)</expression>
       </RegExp>
-      <RegExp conditional="Posters" input="$$18" output="\1" dest="15">
+      <RegExp  input="$$18" output="\1" dest="15">
         <expression noclean="1" repeat="yes">(?i)(&lt;thumb&gt;.*?&lt;/thumb&gt;)</expression>
       </RegExp>
       <RegExp input="" output="" dest="16">
@@ -856,18 +856,9 @@
   </GetFanartAPI>
 
   <GetFanartDataReturnAPI clearbuffers="no" dest="4">
-    <RegExp input="$$6$$5&lt;fanart&gt;$$16&lt;/fanart&gt;" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+    <RegExp input="$$6$$15&lt;fanart&gt;$$16&lt;/fanart&gt;" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
       <RegExp input="$INFO[IdFrom]-$$19" output="&lt;id&gt;\1&lt;/id&gt;" dest="6">
         <expression clear="yes">TheTVDB\.com-(\d+)</expression>
-      </RegExp>
-      <RegExp input="" output="$$15$$14" dest="5">
-        <expression clear="yes"/>
-      </RegExp>      
-      <RegExp input="$INFO[PostersOrder]" output="$$15$$14" dest="5">
-        <expression>Posters first</expression>
-      </RegExp>      
-      <RegExp input="$INFO[PostersOrder]" output="$$14$$15" dest="5">
-        <expression>Banners first</expression>
       </RegExp>
       <RegExp input="" output="" dest="1">
         <expression clear="yes"/>
@@ -887,23 +878,11 @@
         </RegExp>
         <expression noclean="1">(.+)</expression>
       </RegExp>
-      <RegExp conditional="Posters" input="$$5" output="&lt;thumb aspect=&quot;poster&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="15+">
+      <RegExp  input="$$5" output="&lt;thumb aspect=&quot;poster&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="15+">
         <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;poster&lt;/BannerType&gt;</expression>
       </RegExp>
-      <RegExp conditional="Posters" input="$$5" output="&lt;thumb aspect=&quot;poster&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="15+">
+      <RegExp  input="$$5" output="&lt;thumb aspect=&quot;poster&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="15+">
         <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;season&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;season&lt;/BannerType2&gt;</expression>
-      </RegExp>
-      <RegExp conditional="Banners" input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="14+">
-        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;season&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;seasonwide&lt;/BannerType2&gt;</expression>
-      </RegExp>
-      <RegExp conditional="Banners" input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="14+">
-        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;series&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;graphical&lt;/BannerType2</expression>
-      </RegExp>
-      <RegExp conditional="Banners" input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="14+">
-        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;series&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;text&lt;/BannerType2</expression>
-      </RegExp>
-      <RegExp conditional="Banners" input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="14+">
-        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;series&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;blank&lt;/BannerType2</expression>
       </RegExp>
       <RegExp input="" output="" dest="4">
         <expression clear="yes"/>

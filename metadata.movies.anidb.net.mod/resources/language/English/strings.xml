@@ -19,8 +19,5 @@
   <string id="30110">Use rating</string>
   <!-- TheTVDB -->
   <string id="30200">Enable fanarts</string>
-  <string id="30201">Enable banners</string>
   <string id="30202">Continue lookup if no fanart found</string>
-  <string id="30204">Enable posters</string>
-  <string id="30205">Posters/Banners order</string>
 </strings>
