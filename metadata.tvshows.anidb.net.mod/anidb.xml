@@ -201,6 +201,24 @@
       <RegExp input="$$16" output="\1" dest="8+">
         <expression noclean="1"/>
       </RegExp>
+      <RegExp conditional="UseTags" input="$$16" output="\1" dest="8+">
+        <RegExp conditional="AddTagsToAll" input="$INFO[TagList]" output="&lt;tag&gt;\1&lt;/tag&gt;" dest="16">
+          <expression clear="yes" repeat="yes">([^;]+);?</expression>
+        </RegExp>
+        <RegExp conditional="AniDBTags" input="$$5" output="\1" dest="16+">
+          <RegExp input="0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|" output="(?!(?:\1)&quot;)" dest="6">
+            <expression clear="yes">(.*)\|$INFO[MinApproval]\|</expression>
+          </RegExp>
+          <RegExp input="$$1" output="&lt;tag&gt;\1&lt;/tag&gt;" dest="5">
+            <expression clear="yes" repeat="yes">&lt;tag[^&gt;]*approval=&quot;$$6\d+&quot;[^&gt;]*localspoiler=&quot;(?:false|$INFO[IncludeSpoilerTags])&quot;[^&gt;]*&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
+          </RegExp>
+          <expression noclean="1"/>
+        </RegExp>
+        <RegExp input="$$16" output="'\1" dest="16">
+          <expression clear="yes" repeat="yes" noclean="1">`?([^`]+)</expression>
+        </RegExp>
+        <expression noclean="1">'(.*)</expression>
+      </RegExp>
       <!-- Rating is selected by scraper setting (Average or Weighted) -->
       <RegExp input="$INFO[RatingType]" output="$$5" dest="6">
         <RegExp input="$$1" output="\1;\2" dest="5">

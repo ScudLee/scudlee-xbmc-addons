@@ -19,6 +19,12 @@
   <string id="30108">Return only Genres with weight</string>
   <string id="30109">Number of Genres returned</string>
   <string id="30110">Use rating</string>
+  <string id="30111">Use tags</string>
+  <string id="30112">Auto-add anime tags to all shows</string>
+  <string id="30113">Use these tags (separate with a semi-colon)</string>
+  <string id="30114">Add tags from AniDB</string>
+  <string id="30115">Minimum Approval for tags</string>
+  <string id="30116">Include spoiler tags</string>
   <!-- TheTVDB -->
   <string id="30200">Enable fanarts</string>
   <string id="30201">Enable banners</string>
