@@ -1,2 +1,12 @@
+1.1.0:
+Changed: Simplified genre count code
+Changed: Switched alternate id to imdb/tmdb
+Added: Support for movie sets from themoviedb.org
+Added: Support for tagging
+Added: Movie posters from themoviedb.org
+Added: Support for thumb aspects
+Fixed: Empty plot description would result in a category description used instead
+Removed: No wide banners for movies
+
 1.0.0:
 Initial Commit
