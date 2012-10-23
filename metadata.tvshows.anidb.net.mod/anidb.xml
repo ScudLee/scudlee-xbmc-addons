@@ -688,6 +688,12 @@
       <RegExp input="$$20" output="&lt;episodeguide&gt;&lt;url gzip=&quot;yes&quot; cache=&quot;$$20.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=$$20&lt;/url&gt;&lt;/episodeguide&gt;" dest="8+">
         <expression/>
       </RegExp>
+      <RegExp input="-1" output="\1" dest="11">
+        <expression/>
+      </RegExp>
+      <RegExp input="$$19" output="\1" dest="11">
+        <expression>(?i)defaulttvdbseason=&quot;([^&quot;]*)&quot;</expression>
+      </RegExp>
       <RegExp input="$$19" output="\1" dest="12">
         <expression clear="yes">(?i)imdbid=&quot;([^&quot;]*)&quot;</expression>
       </RegExp>
@@ -916,7 +922,7 @@
         <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;season&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;season&lt;/BannerType2&gt;</expression>
       </RegExp>
       <RegExp conditional="Banners" input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="14+">
-        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;season&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;seasonwide&lt;/BannerType2&gt;</expression>
+        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;season&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;seasonwide&lt;/BannerType2&gt;[^&lt;]*&lt;Language&gt;[a-z]*&lt;/Language&gt;[^&lt;]*[^S]*Season&gt;$$11&lt;/Season&gt;</expression>
       </RegExp>
       <RegExp conditional="Banners" input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="14+">
         <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;series&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;graphical&lt;/BannerType2</expression>
@@ -926,6 +932,9 @@
       </RegExp>
       <RegExp conditional="Banners" input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="14+">
         <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;series&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;blank&lt;/BannerType2</expression>
+      </RegExp>
+      <RegExp conditional="Banners" input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="14+">
+        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;season&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;seasonwide&lt;/BannerType2&gt;[^&lt;]*&lt;Language&gt;[a-z]*&lt;/Language&gt;[^&lt;]*[^S]*Season&gt;(?!$$11&lt;)\d+&lt;/Season&gt;</expression>
       </RegExp>
       <RegExp input="" output="" dest="4">
         <expression clear="yes"/>
