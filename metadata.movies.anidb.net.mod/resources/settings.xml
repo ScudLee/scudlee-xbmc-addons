@@ -9,6 +9,7 @@
     <setting label="30003" type="bool" id="PersonalAnimeMapping" default="false"/>
     <setting label="30004" type="text" id="PersonalAnimeMappingUrl" default="http://localhost/pers-anime-list.xml" enable="eq(-1,true)"/>
     <setting type="sep"/>
+    <setting label="30007" type="bool" id="UseSets" default="true"/>
     <setting label="30006" type="number" id="DelayValue" default="125"/>
   </category>
   <category label="AniDB 1">
