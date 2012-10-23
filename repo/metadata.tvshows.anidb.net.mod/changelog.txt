@@ -1,3 +1,12 @@
+1.1.0:
+Changed: Simplified genre count code
+Changed: Prioritised defaulttvdbseason wide banners
+Changed: Now uses displayafterseason/displaybeforeseason
+Added: Support for tagging
+Added: Movie posters from themoviedb.org
+Added: Support for thumb aspects
+Fixed: Empty plot description would result in a category description used instead
+
 1.0.0:
 (Changes from official anidb.net scraper 2.0.0)
 Changed: Default locations of anime lists
