@@ -18,6 +18,7 @@
     <setting type="sep"/>
     <setting label="30104" type="bool" id="SingleStudio" default="true"/>
     <setting label="30107" type="bool" id="SecondAsMain" default="true"/>
+    <setting label="Hidden" type="bool" id="AppearsInAsMain" default="false" visible="false"/>
     <setting label="30105" type="bool" id="SpecialsAtEnd" default="true"/>
     <setting label="30106" type="bool" id="SpecialsInside" default="true"/>
   </category>

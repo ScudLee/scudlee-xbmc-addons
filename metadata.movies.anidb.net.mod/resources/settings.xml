@@ -19,6 +19,8 @@
     <setting label="30102" type="bool" id="Prequels" default="true"/>
     <setting label="30103" type="labelenum" id="AlternativePrequelLinkType" values="Parent Story|Alternative Setting|Side Story" default="Parent Story" enable="eq(-1,true)"/>
     <setting type="sep"/>
+    <setting label="Hidden" type="bool" id="SecondAsMain" default="true" visible="false"/>
+    <setting label="Hidden" type="bool" id="AppearsInAsMain" default="true" visible="false"/>
     <setting label="30104" type="bool" id="SingleStudio" default="true"/>
   </category>
   <category label="AniDB 2">
@@ -36,5 +38,8 @@
   <category label="TheTVDB">
   	<setting label="30200" type="bool" id="Fanarts" default="true"/>
     <setting label="30202" type="bool" id="NoFanartContinue" default="true" enable="eq(-1,true)"/>
+    <setting label="Hidden" type="bool" id="Posters" default="true" visible="false"/>
+    <setting label="Hidden" type="bool" id="Banners" default="false" visible="false"/>
+    <setting label="Hidden" type="labelenum" id="PostersOrder" values="Posters first" default="Posters first" visible="false"/>
   </category>
 </settings>
