@@ -454,151 +454,90 @@
       <RegExp input="$$1" output="\1" dest="5">
         <expression clear="yes" noclean="1">(?i)&lt;categories&gt;(.*?)&lt;/categories&gt;</expression>
       </RegExp>
-      <RegExp input="$$5" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7">
-        <expression clear="yes" repeat="yes">(?i)&lt;category[^&gt;]*weight=&quot;600&quot;&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
+      <!-- Sort categories by weight -->
+      <RegExp input="$$5" output="\1" dest="7">
+        <expression clear="yes" noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;600&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
       </RegExp>
-      <RegExp input="$INFO[GenreWeight]-$$7" output="\1" dest="6">
-        <expression clear="yes" noclean="1">(?i)[^-]*600[^-]*-(.*)</expression>
+      <RegExp input="$$5" output="\1" dest="7+">
+        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;500&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
       </RegExp>
-      <RegExp input="$$5" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7">
-        <expression clear="yes" repeat="yes">(?i)&lt;category[^&gt;]*weight=&quot;500&quot;&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
+      <RegExp input="$$5" output="\1" dest="7+">
+        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;400&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
       </RegExp>
-      <RegExp input="$INFO[GenreWeight]-$$7" output="\1" dest="6+">
-        <expression noclean="1">(?i)[^-]*500[^-]*-(.*)</expression>
+      <RegExp input="$$5" output="\1" dest="7+">
+        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;300&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
       </RegExp>
-      <RegExp input="$$5" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7">
-        <expression clear="yes" repeat="yes">(?i)&lt;category[^&gt;]*weight=&quot;400&quot;&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
+      <RegExp input="$$5" output="\1" dest="7+">
+        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;200&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
       </RegExp>
-      <RegExp input="$INFO[GenreWeight]-$$7" output="\1" dest="6+">
-        <expression noclean="1">(?i)[^-]*400[^-]*-(.*)</expression>
+      <RegExp input="$$5" output="\1" dest="7+">
+        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;100&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
       </RegExp>
-      <RegExp input="$$5" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7">
-        <expression clear="yes" repeat="yes">(?i)&lt;category[^&gt;]*weight=&quot;300&quot;&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
+      <RegExp input="000|100|200|300|400|500|600|" output="(?!(?:\1)&quot;)" dest="9">
+        <expression clear="yes">(.*)\|$INFO[MinGenreWeight]\|</expression>
       </RegExp>
-      <RegExp input="$INFO[GenreWeight]-$$7" output="\1" dest="6+">
-        <expression noclean="1">(?i)[^-]*300[^-]*-(.*)</expression>
+      <!-- Ignore categories below minimum weight -->
+      <RegExp input="$$7" output="\1" dest="7">
+        <expression noclean="1" clear="yes" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;$$9\d+&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
       </RegExp>
-      <RegExp input="$$5" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7">
-        <expression clear="yes" repeat="yes">(?i)&lt;category[^&gt;]*weight=&quot;200&quot;&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
+      <!-- Always ignore these category ids -->
+      <RegExp input="" output="60|128|129|185|242|255|289" dest="9">
+        <expression/>
       </RegExp>
-      <RegExp input="$INFO[GenreWeight]-$$7" output="\1" dest="6+">
-        <expression noclean="1">(?i)[^-]*200[^-]*-(.*)</expression>
+      <!-- Ignore "Magic" if "Super Power" or "Mahou Shoujo" is present -->
+      <RegExp input="$$7" output="|175" dest="9+">
+        <expression>(?i) id="(18|247)"</expression>
       </RegExp>
-      <RegExp input="$$5" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="7">
-        <expression clear="yes" repeat="yes">(?i)&lt;category[^&gt;]*weight=&quot;100&quot;&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
+      <!-- Ignore "Super Power" if "Mahou Shoujo" is present -->
+      <RegExp input="$$7" output="|18" dest="9+">
+        <expression>(?i) id="247"</expression>
       </RegExp>
-      <RegExp input="$INFO[GenreWeight]-$$7" output="\1" dest="6+">
-        <expression noclean="1">(?i)[^-]*100[^-]*-(.*)</expression>
+      <!-- Ignore "Fantasy World" if "Fantasy" is present -->
+      <RegExp input="$$7" output="|291" dest="9+">
+        <expression>(?i) id="15"</expression>
+      </RegExp>
+      <!-- Ignore "Fantasy" if "Contemporary Fantasy" or "Dark Fantasy" is present -->
+      <RegExp input="$$7" output="|15" dest="9+">
+        <expression>(?i) id="(183|265)"</expression>
+      </RegExp>
+      <!-- Ignore "Catgirls" if "Juujin" is present -->
+      <RegExp input="$$7" output="|202" dest="9+">
+        <expression>(?i) id="201"</expression>
+      </RegExp>
+      <!-- Ignore "Genetic Modification" and "Cyborgs" if "Human Enhancement" is present -->
+      <RegExp input="$$7" output="|120|329" dest="9+">
+        <expression>(?i) id="328"</expression>
+      </RegExp>
+      <!-- Ignore "Transforming Robots" if "Piloted Robots" is present -->
+      <RegExp input="$$7" output="|149" dest="9+">
+        <expression>(?i) id="118"</expression>
+      </RegExp>
+      <!-- Ignore "Piloted Robots" if "Mecha" is present -->
+      <RegExp input="$$7" output="|118" dest="9+">
+        <expression>(?i) id="13"</expression>
+      </RegExp>
+      <!-- Ignore "Ninjas" if "Martial Arts" is present -->
+      <RegExp input="$$7" output="|29" dest="9+">
+        <expression>(?i) id="20"</expression>
+      </RegExp>
+      <!-- Ignore "Cops" if "Special Squads" is present -->
+      <RegExp input="$$7" output="|177" dest="9+">
+        <expression>(?i) id="203"</expression>
+      </RegExp>
+      <!-- Ignore "Space" if "Space Travel" is present -->
+      <RegExp input="$$7" output="|19" dest="9+">
+        <expression>(?i) id="174"</expression>
+      </RegExp>
+      <RegExp input="$$7" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="6">
+        <expression noclean="1" clear="yes" repeat="yes">(?i)&lt;category[^&gt;]*id=&quot;(?!(?:$$9)&quot;)\d+&quot;[^&gt;]*parentid=&quot;(?!(?:6|22|23|24|50|83|116|153|197|216|268|269|279|280|282|289|514)&quot;)\d+&quot;[^&gt;]*&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
       </RegExp>
       <RegExp input="$$17" output="\1" dest="6+">
         <expression noclean="1" repeat="yes">(?i)(&lt;genre&gt;.*?&lt;/genre&gt;)</expression>
       </RegExp>
-      <!-- Main genres filtering -->
-      <RegExp input="$$6" output="\1" dest="6">
-        <expression clear="yes" repeat="yes" noclean="1">(?i)(&lt;genre&gt;(?!Asia&lt;|Japan&lt;|Earth&lt;|Erotic game&lt;|Dating sim - Visual Novel&lt;|Game&lt;|Novel&lt;|Manga&lt;|Future&lt;|Present&lt;|Past&lt;|Plot continuity&lt;|Shipboard&lt;|New&lt;|Humanoid&lt;|Sudden Girlfriend Appearance&lt;|Gigantic Breasts&lt;|Large Breasts&lt;|Small Breasts&lt;|Boing&lt;|Sex&lt;|Stereotypes&lt;|Canada&lt;|Italy&lt;|United-Kingdom&lt;|Americas&lt;|United States&lt;|Female Students&lt;|Clubs&lt;|Other Planet&lt;|Europe&lt;|Twisted&lt;|Violent Retribution for Accidental Infringement&lt;)[^&lt;]+&lt;/genre&gt;)</expression>
-      </RegExp>
-      <!-- Ignore "Magic" if "Super Power" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Super Power&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Magic&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Magic&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Super Power&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Magic" if "Mahou Shoujo" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Mahou Shoujo&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Magic&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Magic&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Mahou Shoujo&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Super Power" if "Mahou Shoujo" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Mahou Shoujo&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Super Power&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Super Power&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Mahou Shoujo&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Fantasy World" if "Fantasy" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Fantasy&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Fantasy World&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Fantasy World&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Fantasy&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Fantasy" if "Contemporary Fantasy" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Contemporary Fantasy&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Fantasy&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Fantasy&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Contemporary Fantasy&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Fantasy" if "Dark Fantasy" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Dark Fantasy&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Fantasy&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Fantasy&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Dark Fantasy&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Catgirls" if "Juujin" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Juujin&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Catgirls&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Catgirls&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Juujin&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Genetic Modification" if "Human Enhancement" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Human Enhancement&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Genetic Modification&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Genetic Modification&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Human Enhancement&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Cyborgs" if "Human Enhancement" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Human Enhancement&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Cyborgs&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Cyborgs&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Human Enhancement&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Transforming Robots" if "Piloted Robots" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Piloted Robots&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Transforming Robots&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Transforming Robots&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Piloted Robots&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Piloted Robots" if "Mecha" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Mecha&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Piloted Robots&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Piloted Robots&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Mecha&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Ninjas" if "Martial Arts" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Martial Arts&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Ninjas&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Ninjas&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Martial Arts&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Cops" if "Special Squads" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Special Squads&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Cops&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Cops&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Special Squads&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <!-- Ignore "Space" if "Space Travel" is present -->
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Space Travel&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Space&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1\2" dest="6">
-        <expression noclean="1,2">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?)&lt;genre&gt;Space&lt;/genre&gt;((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*?&lt;genre&gt;Space Travel&lt;/genre&gt;(?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;)*)</expression>
-      </RegExp>
       <RegExp input="$$18" output="\1" dest="6">
         <expression noclean="1" repeat="yes">(?i)(&lt;genre&gt;.*?&lt;/genre&gt;)</expression>
       </RegExp>
-      <!-- Only specified number genres is overtaken -->
+      <!-- Only take up to the specified number of genres -->
       <RegExp input="$$6" output="\1" dest="8">
         <expression clear="yes" noclean="1">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;){0,$INFO[GenreCount]})</expression>
       </RegExp>

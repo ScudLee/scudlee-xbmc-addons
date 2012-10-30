@@ -15,7 +15,7 @@
   <string id="30102">Enable prequel lookup</string>
   <string id="30103">Alternative prequel link type</string>
   <string id="30104">Return only single Animation studio</string>
-  <string id="30108">Return only Genres with weight</string>
+  <string id="30108">Minimum Genre weight</string>
   <string id="30109">Number of Genres returned</string>
   <string id="30110">Use rating</string>
   <string id="30111">Use tags</string>
