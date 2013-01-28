@@ -8,7 +8,6 @@
   <string id="30004">Personal anime mapping URL</string>
   <string id="30005">Store anime ID from</string>
   <string id="30006">Delay Parameter</string>
-  <string id="30007">Get set titles from themoviedb.org</string>
   <!-- AniDB -->
   <string id="30100">Use official name instead of main name</string>
   <string id="30101">Official name language</string>
@@ -24,6 +23,15 @@
   <string id="30114">Add tags from AniDB</string>
   <string id="30115">Minimum Approval for tags</string>
   <string id="30116">Include spoiler tags</string>
+  <!-- Movie -->
+  <string id="30300">Enable sets (collections)</string>
+  <string id="30301">Get set titles from movie set list</string>
+  <string id="30302">Anime movie set list URL</string>
+  <string id="30303">Use personal anime set list</string>
+  <string id="30304">Personal anime movie set list URL</string>
+  <string id="30305">Get set titles from themoviedb.org</string>
+  <string id="30306">Prefer themoviedb.org sets</string>
+  <string id="30307">Preferred Certification Country</string>
   <!-- TheTVDB -->
   <string id="30200">Enable fanarts</string>
   <string id="30202">Continue lookup if no fanart found</string>
