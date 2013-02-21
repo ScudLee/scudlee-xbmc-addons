@@ -105,6 +105,9 @@
       <RegExp input="$$7" output="&lt;episode&gt;&lt;title&gt;\4&lt;/title&gt;&lt;url cache=&quot;$$20.xml&quot;&gt;\1&lt;/url&gt;&lt;epnum&gt;4\2&lt;/epnum&gt;&lt;season&gt;0&lt;/season&gt;&lt;id&gt;\1&lt;/id&gt;&lt;aired&gt;\3&lt;/aired&gt;&lt;/episode&gt;" dest="8+">
         <expression repeat="yes">(?i)&lt;episode\s+id=&quot;(\d+)&quot;[^&gt;]*&gt;\s*&lt;epno\s+type=&quot;6&quot;&gt;o(\d\d)&lt;/epno&gt;\s*(?:&lt;length&gt;[^&lt;]*&lt;/length&gt;\s*)?(?:&lt;airdate&gt;([^&lt;]+)&lt;/airdate&gt;\s*)?(?:&lt;rating[^&gt;]*&gt;[^&lt;]*&lt;/rating&gt;\s*)?(?:&lt;title[^&gt;]*&gt;[^&lt;]*&lt;/title&gt;\s*)*?&lt;title xml:lang=&quot;en&quot;&gt;([^&lt;]+)&lt;/title&gt;.*?&lt;/episode&gt;</expression>
       </RegExp>
+      <RegExp input="" output="&lt;chain function=&quot;StartDelayLoop&quot;&gt;&amp;&lt;/chain&gt;" dest="8+">
+        <expression/> 
+      </RegExp>
       <expression noclean="1"/>
     </RegExp>
   </GetEpisodeList>

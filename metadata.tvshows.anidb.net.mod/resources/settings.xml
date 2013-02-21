@@ -8,6 +8,8 @@
     <setting label="30002" type="text" id="AnimeMappingUrl" default="https://raw.github.com/ScudLee/anime-lists/master/anime-list.xml"/>
     <setting label="30003" type="bool" id="PersonalAnimeMapping" default="false"/>
     <setting label="30004" type="text" id="PersonalAnimeMappingUrl" default="http://localhost/pers-anime-list.xml" enable="eq(-1,true)"/>
+    <setting type="sep"/>
+    <setting label="30006" type="number" id="DelayValue" default="1"/>
   </category>
   <category label="AniDB 1">
     <setting label="30100" type="bool" id="OfficialName" default="false"/>

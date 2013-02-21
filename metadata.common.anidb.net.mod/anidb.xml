@@ -926,5 +926,37 @@
       <expression noclean="1"/>
     </RegExp>
   </ReturnArtwork>
+
+  <StartDelayLoop clearbuffers="no" dest="3">
+    <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
+      <RegExp input="" output="`X" dest="11">
+        <expression/> 
+      </RegExp>
+      <RegExp input="" output="&lt;chain function=&quot;DelayLoop&quot;&gt;&amp;&lt;/chain&gt;" dest="8">
+        <expression/>
+      </RegExp>
+      <expression noclean="1"/>
+    </RegExp>
+  </StartDelayLoop>  
+  <DelayLoop clearbuffers="no" dest="4">
+    <RegExp input="$$4" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+      <RegExp input="$$11" output="&lt;chain function=&quot;DelayLoop&quot;&gt;&amp;&lt;/chain&gt;" dest="4">
+        <RegExp input="$$10" output="\1" dest="11">
+          <RegExp input="$$11" output="\1`X" dest="10">
+            <expression>^((?:`(?!.*Z)){1,$INFO[DelayValue]}?)X$</expression> 
+          </RegExp> 
+          <RegExp input="$$11" output="\1Y" dest="10">
+            <expression>^((?:`(?!.*Z)){$INFO[DelayValue]})`X$</expression> 
+          </RegExp> 
+          <RegExp input="$$11" output="\1Y" dest="10">
+            <expression>^((?:`(?!.*Z)){1,$INFO[DelayValue]}?)`Y$</expression> 
+          </RegExp> 
+          <expression/>
+        </RegExp>
+        <expression clear="yes">``+</expression>
+      </RegExp>
+      <expression noclean="1"/>
+    </RegExp>
+  </DelayLoop>
   
 </scraperfunctions>
