@@ -1,3 +1,6 @@
+1.1.1:
+Changed: Dropped the www from thetvdb URLs
+
 1.1.0:
 Changed: Simplified genre count code
 Changed: Switched alternate id to imdb/tmdb
