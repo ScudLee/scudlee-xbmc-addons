@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
   <!-- General -->
-  <string id="30000">Use Google Search</string>
   <string id="30001">Anime list URL</string>
   <string id="30002">Anime mapping URL</string>
   <string id="30003">Use personal anime mapping</string>
