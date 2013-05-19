@@ -5,25 +5,7 @@
       <expression>aid=(\d+)</expression>
     </RegExp>
   </NfoUrl>
-  
-  <CreateSearchUrl clearbuffers="no" dest="4">  
-    <RegExp conditional="Google" input="$$4" output="&lt;url gzip=&quot;yes&quot;&gt;http://www.google.com/search?q=site:anidb.net\1&amp;filter=0&lt;/url&gt;" dest="4">
-      <RegExp input="$$1%20$$2" output="+\1" dest="4">
-        <expression clear="yes" repeat="yes">(?i)(?:%[a-f0-9]{2}|[!.()-])*([a-z0-9]+)?</expression>
-      </RegExp>
-      <expression clear="yes" noclean="1"/>
-    </RegExp> 
-    <RegExp conditional="!Google" input="$$1" output="&lt;url gzip=&quot;yes&quot; cache=&quot;animetitles.xml&quot;&gt;$INFO[AnimeListUrl]&lt;/url&gt;" dest="4">
-      <RegExp input="$$1" output="\1" dest="18">
-        <expression clear="yes"/>
-      </RegExp>
-      <expression clear="yes"/>
-    </RegExp>
-    <RegExp input="" output="" dest="1">
-      <expression clear="yes"/>
-    </RegExp>
-  </CreateSearchUrl>
-  
+
   <GetSearchResults clearbuffers="no" dest="4">
     <RegExp input="$$4" output="&lt;results&gt;\1&lt;/results&gt;" dest="4">
       <RegExp conditional="Google" input="$$4" output="\1" dest="4">
