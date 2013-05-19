@@ -51,6 +51,9 @@
       <RegExp input="" output="&lt;chain function=&quot;GetArtworkByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
         <expression/>
       </RegExp>
+      <RegExp input="" output="&lt;chain function=&quot;GetTVArtworkByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+        <expression/>
+      </RegExp>
       <RegExp input="" output="&lt;episodeguide&gt;&lt;url gzip=&quot;yes&quot; cache=&quot;$$20.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=$$20&lt;/url&gt;&lt;/episodeguide&gt;" dest="8+">
         <expression/>
       </RegExp>
@@ -60,6 +63,38 @@
       <expression noclean="1"/>
     </RegExp>
   </GetDetails>
+
+  <GetTVArtworkByIDChain clearbuffers="no" dest="3">
+    <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
+      <RegExp input="$$19" output="&lt;url function=&quot;ParseTVDBBannerArtwork&quot; cache=&quot;tvdb-$$1.xml&quot;&gt;http://www.thetvdb.com/api/1D62F2F90030C444/series/\1/all/en.zip&lt;/url&gt;" dest="8">
+        <expression>(\d+)</expression>
+      </RegExp>
+      <expression noclean="1"/>
+    </RegExp>
+  </GetTVArtworkByIDChain>
+  <ParseTVDBBannerArtwork clearbuffers="no" dest="4">
+    <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+      <RegExp input="$$1" output="\1" dest="5">
+        <expression clear="yes" noclean="1">(?i)&lt;Banners&gt;(.*?)&lt;/Banners&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="8">
+        <expression clear="yes" repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;season&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;seasonwide&lt;/BannerType2&gt;[^&lt;]*&lt;Language&gt;[a-z]*&lt;/Language&gt;[^&lt;]*[^S]*Season&gt;$$11&lt;/Season&gt;</expression>
+      </RegExp>
+      <RegExp input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;series&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;graphical&lt;/BannerType2</expression>
+      </RegExp>
+      <RegExp input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;series&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;text&lt;/BannerType2</expression>
+      </RegExp>
+      <RegExp input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;series&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;blank&lt;/BannerType2</expression>
+      </RegExp>
+      <RegExp input="$$5" output="&lt;thumb aspect=&quot;banner&quot;&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="8+">
+        <expression repeat="yes">(?i)&lt;BannerPath&gt;([^&lt;]*)&lt;/BannerPath&gt;[^&lt;]*&lt;BannerType&gt;season&lt;/BannerType&gt;[^&lt;]*&lt;BannerType2&gt;seasonwide&lt;/BannerType2&gt;[^&lt;]*&lt;Language&gt;[a-z]*&lt;/Language&gt;[^&lt;]*[^S]*Season&gt;(?!$$11&lt;)\d+&lt;/Season&gt;</expression>
+      </RegExp>
+      <expression noclean="1"/>
+    </RegExp>
+  </ParseTVDBBannerArtwork>
 
   <GetEpisodeList clearbuffers="yes" dest="4">
     <RegExp input="$$8" output="&lt;episodeguide&gt;\1&lt;/episodeguide&gt;" dest="4">

@@ -48,8 +48,5 @@
   <category label="TheTVDB">
   	<setting label="30200" type="bool" id="Fanarts" default="true"/>
     <setting label="30202" type="bool" id="NoFanartContinue" default="true" enable="eq(-1,true)"/>
-    <setting label="Hidden" type="bool" id="Posters" default="true" visible="false"/>
-    <setting label="Hidden" type="bool" id="Banners" default="false" visible="false"/>
-    <setting label="Hidden" type="labelenum" id="PostersOrder" values="Posters first" default="Posters first" visible="false"/>
   </category>
 </settings>
