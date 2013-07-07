@@ -198,7 +198,7 @@
           <expression clear="yes">(?i)&lt;title xml:lang=&quot;en&quot;[^&gt;]*&gt;([^&lt;]+)&lt;/title&gt;</expression>
         </RegExp>
         <RegExp input="$$6" output="'\1" dest="7">
-          <expression clear="yes" repeat="yes">`?([^`]+)</expression>
+          <expression clear="yes" repeat="yes" noclean="1">`?([^`]+)</expression>
         </RegExp>
         <expression>'(.*)</expression>
       </RegExp>
