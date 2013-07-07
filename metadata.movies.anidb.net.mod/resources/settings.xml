@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
   <category label="General">
+    <setting label="30000" type="bool" id="Google" default="false"/>
     <setting label="30005" type="labelenum" id="IdFrom" values="AniDB.net|IMDB.com" default="AniDB.net"/>
     <setting type="sep"/>
     <setting label="30001" type="text" id="AnimeTitlesUrl" default="https://raw.github.com/ScudLee/anime-lists/master/animetitles.xml"/>
