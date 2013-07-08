@@ -1,3 +1,12 @@
+2.0.0
+Changed: GetDetails broken into separate shared functions
+Changed: Genre handling rewritten
+Changed: Simplified artwork handling
+Changed: Google search rewritten
+Added: Movie trailers from themoviedb.org
+Added: Certification from themoviedb.org
+Added: Movie sets from anime-movieset-list.xml
+
 1.1.1:
 Changed: Dropped the www from thetvdb URLs
 

@@ -1,3 +1,12 @@
+2.0.0
+Changed: GetDetails broken into separate shared functions
+Changed: Genre handling rewritten
+Changed: Simplified artwork handling
+Changed: Google search rewritten
+Added: Delay parameter to slow scraping
+Added: Season artwork support
+Fixed: Episode titles with an apostrophe followed by a space would lose the space
+
 1.1.1:
 Changed: Dropped the www from thetvdb URLs
 
