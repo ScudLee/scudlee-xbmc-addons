@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="metadata.movies.anidb.net.mod"
-       name="AniDB.net [MOD]"
-       version="1.1.1"
+<addon id="metadata.common.anidb.net"
+       name="AniDB.net [MOD] common scraper functions"
+       version="1.0.0"
        provider-name="scudlee">
   <requires>
-    <import addon="xbmc.metadata" version="1.0"/>
+    <import addon="xbmc.metadata" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.metadata.scraper.library"
+             library="anidb.xml"
+             cachepersistence="48:00"/>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">AniDB.net [MOD] scraper library</summary>
+    <description lang="en">Download anime show information from AniDB.net</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="metadata.movies.anidb.net.mod"
+       name="AniDB.net [MOD]"
+       version="2.0.0"
+       provider-name="scudlee">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0"/>
+    <import addon="metadata.common.anidb.net" version="1.0.0"/>
+    <import addon="metadata.common.themoviedb.org" version="2.9.0"/>
+    <import addon="plugin.video.youtube" version="4.0.0" optional="true"/>
   </requires>
   <extension point="xbmc.metadata.scraper.movies"
              language="en"
@@ -20,10 +40,11 @@
 
 <addon id="metadata.tvshows.anidb.net.mod"
        name="AniDB.net [MOD]"
-       version="1.1.1"
+       version="2.0.0"
        provider-name="scudlee">
   <requires>
-    <import addon="xbmc.metadata" version="1.0"/>
+    <import addon="xbmc.metadata" version="2.1.0"/>
+    <import addon="metadata.common.anidb.net" version="1.0.0"/>
   </requires>
   <extension point="xbmc.metadata.scraper.tvshows"
              language="en"
