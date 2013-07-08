@@ -1,3 +1,6 @@
+2.0.1
+Version bump to update over 2.0.0rc1
+
 2.0.0
 Changed: GetDetails broken into separate shared functions
 Changed: Genre handling rewritten
