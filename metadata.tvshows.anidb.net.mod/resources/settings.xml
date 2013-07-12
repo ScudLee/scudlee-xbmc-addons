@@ -32,9 +32,13 @@
     <setting label="30111" type="bool" id="UseTags" default="false"/>
     <setting label="30112" type="bool" id="AddTagsToAll" default="false" visible="eq(-1,true)"/>
     <setting label="30113" type="text" id="TagList" subsetting="true" default="Anime" visible="eq(-2,true)" enable="eq(-1,true)"/>
-    <setting label="30114" type="bool" id="AniDBTags" default="false" visible="eq(-3,true)"/>
-    <setting label="30115" type="labelenum" id="MinApproval" subsetting="true" values="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20" default="10" visible="eq(-4,true)" enable="eq(-1,true)"/>
-    <setting label="30116" type="bool" id="IncludeSpoilerTags" subsetting="true" default="false" visible="eq(-5,true)" enable="eq(-2,true)"/>
+    <setting label="30117" type="bool" id="SourceTags" subsetting="true" default="false" visible="eq(-3,true)"/>
+    <setting label="30118" type="text" id="SourcePrefix" subsetting="true" default="Original Work: " visible="eq(-4,true)" enable="eq(-1,true)"/>
+    <setting label="30119" type="bool" id="LocationTags" subsetting="true" default="false" visible="eq(-5,true)"/>
+    <setting label="30120" type="text" id="LocationPrefix" subsetting="true" default="Location: " visible="eq(-6,true)" enable="eq(-1,true)"/>
+    <setting label="30114" type="bool" id="AniDBTags" default="false" visible="eq(-7,true)"/>
+    <setting label="30115" type="labelenum" id="MinApproval" subsetting="true" values="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20" default="10" visible="eq(-8,true)" enable="eq(-1,true)"/>
+    <setting label="30116" type="bool" id="IncludeSpoilerTags" subsetting="true" default="false" visible="eq(-9,true)" enable="eq(-2,true)"/>
   </category>
   <category label="TheTVDB">
     <setting label="30200" type="bool" id="Fanarts" default="true"/>

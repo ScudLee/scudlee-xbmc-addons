@@ -26,6 +26,10 @@
   <string id="30114">Add tags from AniDB</string>
   <string id="30115">Minimum Approval for tags</string>
   <string id="30116">Include spoiler tags</string>
+  <string id="30117">Add source-based tags</string>
+  <string id="30118">Source tag prefix</string>
+  <string id="30119">Add location-based tags</string>
+  <string id="30120">Location tag prefix</string>
   <!-- TheTVDB -->
   <string id="30200">Enable fanarts</string>
   <string id="30202">Continue lookup if no fanart found</string>

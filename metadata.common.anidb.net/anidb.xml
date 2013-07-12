@@ -415,6 +415,18 @@
         </RegExp>
         <expression noclean="1"/>
       </RegExp>
+      <RegExp conditional="SourceTags" input="$$5" output="\1" dest="6+">
+        <RegExp input="$$1" output="&lt;tag&gt;$INFO[SourcePrefix]\1&lt;/tag&gt;" dest="5">
+          <expression clear="yes" repeat="yes">&lt;category[^&gt;]*parentid=&quot;(?:268|269|273)&quot;[^&gt;]*&gt;[^&lt;]*&lt;name&gt;([^&lt;]*)&lt;/name&gt;</expression>
+        </RegExp>
+        <expression noclean="1"/>
+      </RegExp>
+      <RegExp conditional="LocationTags" input="$$5" output="\1" dest="6+">
+        <RegExp input="$$1" output="&lt;tag&gt;$INFO[LocationPrefix]\1&lt;/tag&gt;" dest="5">
+          <expression clear="yes" repeat="yes">&lt;category[^&gt;]*parentid=&quot;(?:7|19|22|23|24|116|128|197|279|280|289|291|514|519|525|526)&quot;[^&gt;]*&gt;[^&lt;]*&lt;name&gt;([^&lt;]*)&lt;/name&gt;</expression>
+        </RegExp>
+        <expression noclean="1"/>
+      </RegExp>
       <RegExp input="$$6" output="\1" dest="8">
         <RegExp input="$$6" output="'\1" dest="6">
           <expression clear="yes" repeat="yes" noclean="1">`?([^`]+)</expression>
