@@ -1,3 +1,6 @@
+2.1.0
+Added: Original Work and Location tagging
+
 2.0.1
 Version bump to update over 2.0.0rc1
 
