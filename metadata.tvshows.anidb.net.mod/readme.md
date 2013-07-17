@@ -79,6 +79,14 @@ Settings
 *   **Use these tags (separate with a semi-colon)** - The specific set of tags to use.  The default is just "Anime",
     but you could for example use: Anime;Animation;Japanese to add all three tags.
 
+*   **Add source-based tags** - Add tags based on any "Original Work" categories.
+
+*   **Source tag prefix** - Prefix to add to source-based tags (to aid in sorting).  Remember to include a space at the end.
+
+*   **Add location-based tags** - Add tags based on any "Location" categories.
+
+*   **Location tag prefix** - Prefix to add to location-based tags (to aid in sorting).  Remember to include a space at the end.
+
 *   **Add tags from AniDB** - Whether to use the tags used on AniDB.
 
 *   **Minimum Approval for tags** - Similar to genre weight.  Higher approval = Better fit.
