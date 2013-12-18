@@ -865,7 +865,7 @@
       <RegExp input="$$1" output="&lt;url function=&quot;ParseAniDBArtwork&quot; gzip=&quot;yes&quot; cache=&quot;\1.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=\1&lt;/url&gt;" dest="8">
         <expression/>
       </RegExp>
-      <RegExp input="$$12" output="&lt;url function=&quot;ParseTMDBArtwork&quot; cache=&quot;tmdb-images-$$1-\1.json&quot;&gt;http://api.themoviedb.org/3/movie/\1/images?api_key=57983e31fb435df4df77afb854740ea9&lt;/url&gt;" dest="8+">
+      <RegExp input="$$12" output="&lt;url function=&quot;ParseTMDBBaseImageURL&quot; cache=&quot;tmdb-config.json&quot;&gt;http://api.tmdb.org/3/configuration?api_key=57983e31fb435df4df77afb854740ea9&lt;/url&gt;&lt;url function=&quot;ParseTMDBArtwork&quot; cache=&quot;tmdb-images-$$1-\1.json&quot;&gt;http://api.tmdb.org/3/movie/\1/images?api_key=57983e31fb435df4df77afb854740ea9&lt;/url&gt;" dest="8+">
         <expression repeat="yes">((?:tt)?\d+),?</expression>
       </RegExp>
       <RegExp input="$$19" output="&lt;url function=&quot;ParseTVDBArtwork&quot; cache=&quot;tvdb-$$1.xml&quot;&gt;http://www.thetvdb.com/api/1D62F2F90030C444/series/\1/all/en.zip&lt;/url&gt;" dest="8+">
@@ -894,19 +894,27 @@
       <expression noclean="1"/>
     </RegExp>
   </ParseAniDBArtwork>
+  <ParseTMDBBaseImageURL clearbuffers="no" dest="4">
+    <RegExp input="$$5" output="&lt;details&gt;$$10&lt;/details&gt;" dest="4">
+      <RegExp input="$$1" output="\1" dest="10">
+        <expression>"images":\{"base_url":"([^"]*)"</expression>
+      </RegExp>
+      <expression noclean="1" />
+    </RegExp>
+  </ParseTMDBBaseImageURL>
   <ParseTMDBArtwork clearbuffers="no" dest="4">
     <RegExp input="$$8" output="&lt;details&gt;\1&lt;details&gt;" dest="4">
       <RegExp input="$$1" output="\1" dest="7">
         <expression clear="yes" noclean="1">&quot;posters&quot;:\[{([^\]]*)</expression>
       </RegExp>
-      <RegExp input="$$7" output="&lt;thumb aspect=&quot;poster&quot; preview=&quot;http://cf2.imgobject.com/t/p/w500\1&quot;&gt;http://cf2.imgobject.com/t/p/original\1&lt;/thumb&gt;" dest="8">
+      <RegExp input="$$7" output="&lt;thumb aspect=&quot;poster&quot; preview=&quot;$$10w500\1&quot;&gt;$$10original\1&lt;/thumb&gt;" dest="8">
         <expression clear="yes" repeat="yes" noclean="1">&quot;file_path&quot;:&quot;([^&quot;]*)</expression>
       </RegExp>
       <RegExp conditional="Fanarts" input="$$9" output="\1" dest="16+">
         <RegExp input="$$1" output="\1" dest="7">
           <expression clear="yes" noclean="1">&quot;backdrops&quot;:\[{([^\]]*)</expression>
         </RegExp>
-        <RegExp input="$$7" output="&lt;thumb preview=&quot;http://cf2.imgobject.com/t/p/w780\1&quot;&gt;http://cf2.imgobject.com/t/p/original\1&lt;/thumb&gt;" dest="9">
+        <RegExp input="$$7" output="&lt;thumb preview=&quot;$$10w780\1&quot;&gt;$$10original\1&lt;/thumb&gt;" dest="9">
           <expression clear="yes" repeat="yes" noclean="1">&quot;file_path&quot;:&quot;([^&quot;]*)</expression>
         </RegExp>
         <expression noclean="1"/>
