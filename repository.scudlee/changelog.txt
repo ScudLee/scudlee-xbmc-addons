@@ -1,2 +1,6 @@
 1.0.0:
 Initial commit
+1.1.0:
+bakabt.info cache system implemented
+1.2.0:
+Skipped to match other versions.

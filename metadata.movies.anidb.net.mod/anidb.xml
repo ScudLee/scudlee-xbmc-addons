@@ -72,7 +72,7 @@
       <RegExp input="" output="&lt;chain function=&quot;GetMovieData&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
         <expression/>
       </RegExp>
-      <RegExp input="$$1" output="&lt;id&gt;$$20&lt;/id&gt;&lt;plot&gt;### YOU ARE BANNED FROM ANIDB.NET ###\nWAIT SOME TIME UNTIL YOU ARE UNBANNED&lt;/plot&gt;&lt;episodeguide&gt;&lt;url gzip=&quot;yes&quot; cache=&quot;$$2.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=$$2&lt;/url&gt;&lt;/episodeguide&gt;" dest="8">
+      <RegExp input="$$1" output="&lt;id&gt;$$20&lt;/id&gt;&lt;plot&gt;### YOU ARE BANNED FROM ANIDB.NET ###\nWAIT SOME TIME UNTIL YOU ARE UNBANNED&lt;/plot&gt;&lt;episodeguide&gt;&lt;url gzip=&quot;yes&quot; cache=&quot;$$2.xml&quot;&gt;http://bakabt.info/anidb/api/index.php?aid=$$2&lt;/url&gt;&lt;/episodeguide&gt;" dest="8">
         <expression>(?i)&lt;error&gt;banned&lt;/error&gt;</expression>
       </RegExp>
       <RegExp input="" output="&lt;chain function=&quot;StartDelayLoop&quot;&gt;&amp;&lt;/chain&gt;" dest="8+">

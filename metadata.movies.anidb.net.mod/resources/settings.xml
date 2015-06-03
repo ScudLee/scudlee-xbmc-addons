@@ -4,7 +4,7 @@
     <setting label="30000" type="bool" id="Google" default="false"/>
     <setting label="30005" type="labelenum" id="IdFrom" values="AniDB.net|IMDB.com" default="AniDB.net"/>
     <setting type="sep"/>
-    <setting label="30001" type="text" id="AnimeTitlesUrl" default="https://raw.github.com/ScudLee/anime-lists/master/animetitles.xml"/>
+    <setting label="30001" type="text" id="AnimeTitlesUrl" default="https://bakabt.info/anidb/animetitles.xml"/>
     <setting label="30002" type="text" id="AnimeMappingListUrl" default="https://raw.github.com/ScudLee/anime-lists/master/anime-list.xml"/>
     <setting label="30003" type="bool" id="PersonalAnimeMapping" default="false"/>
     <setting label="30004" type="text" id="PersonalAnimeMappingUrl" default="http://localhost/pers-anime-list.xml" enable="eq(-1,true)"/>
