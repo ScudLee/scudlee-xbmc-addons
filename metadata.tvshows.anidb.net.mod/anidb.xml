@@ -198,7 +198,13 @@
       </RegExp>
       <RegExp input="$$7" output="&lt;title&gt;\1&lt;/title&gt;" dest="4+">
         <RegExp input="$$5" output="\1" dest="6">
-          <expression clear="yes">(?i)&lt;title xml:lang=&quot;en&quot;[^&gt;]*&gt;([^&lt;]+)&lt;/title&gt;</expression>
+          <expression clear="yes" trim="1">(?i)&lt;title xml:lang=&quot;en&quot;[^&gt;]*&gt;([^&lt;]+)&lt;/title&gt;</expression>
+        </RegExp>
+        <RegExp conditional="OfficialName" input="$$5" output="\1" dest="8">
+          <expression clear="yes" trim="1">(?i)&lt;title\s+xml:lang=&quot;$INFO[OfficialLanguage]&quot;[^&gt;]*&gt;([^&lt;]+)&lt;/title&gt;</expression> 
+        </RegExp>
+        <RegExp conditional="OfficialName" input="$$8" output="\1" dest="6">
+          <expression noclean="1">(.+)</expression>
         </RegExp>
         <RegExp input="$$6" output="'\1" dest="7">
           <expression clear="yes" repeat="yes" noclean="1">`?([^`]+)</expression>
