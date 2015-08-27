@@ -40,7 +40,7 @@
 
 <addon id="metadata.tvshows.anidb.net.mod"
        name="AniDB.net [MOD]"
-       version="2.1.0"
+       version="2.2.0"
        provider-name="scudlee">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0"/>
