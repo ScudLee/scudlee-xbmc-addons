@@ -354,32 +354,44 @@
         <RegExp input="" output="false" dest="12">
           <expression/>
         </RegExp>
-        <RegExp input="$$6" output="\1" dest="16">
-          <expression clear="yes">(?i)defaulttvdbseason=&quot;(\d+)&quot;</expression>
-        </RegExp>
-        <RegExp input="$$6" output="1" dest="16">
-          <expression>(?i)defaulttvdbseason=&quot;a&quot;</expression>
-        </RegExp>
         <RegExp input="$$6" output="true" dest="12">
           <expression>(?i)defaulttvdbseason=&quot;a&quot;</expression>
         </RegExp>
-        <RegExp input="$$19" output="0" dest="16">
-          <expression>^0$</expression>
+        <XSLT input="$$6" output="\1" dest="11">
+          <xsl:stylesheet version = "1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+            <xsl:output omit-xml-declaration="yes" indent="yes"/>
+            <xsl:output indent="yes"/>
+            <xsl:strip-space elements="*"/>
+            <xsl:template match="anime">
+              <xsl:variable name="exactmatch" select="mapping-list/mapping[(@anidbseason=$$19) and (substring-after(.,';$$18-')!='')]"/>
+              <xsl:variable name="rangematch" select="mapping-list/mapping[(@anidbseason=$$19) and ((@start&lt;=$$18) and (@end&gt;=$$18))]"/>
+              <season>
+                <xsl:choose>
+                  <xsl:when test="$exactmatch"><xsl:value-of select="$exactmatch/@tvdbseason"/></xsl:when>
+                  <xsl:when test="$rangematch"><xsl:value-of select="$rangematch/@tvdbseason"/></xsl:when>
+                  <xsl:when test="($$19=1) and (@defaulttvdbseason!='a')"><xsl:value-of select="@defaulttvdbseason"/></xsl:when>
+                  <xsl:otherwise>$$19</xsl:otherwise>
+                </xsl:choose>
+              </season>
+              <episode>
+                <xsl:choose>
+                  <xsl:when test="$exactmatch"><xsl:value-of select="substring-before(substring-after($exactmatch,';$$18-'),';')"/></xsl:when>
+                  <xsl:when test="$rangematch"><xsl:value-of select="$$18+$rangematch/@offset"/></xsl:when>
+                  <xsl:when test="($$19=1) and @episodeoffset"><xsl:value-of select="$$18+@episodeoffset"/></xsl:when>
+                  <xsl:otherwise>$$18</xsl:otherwise>
+                </xsl:choose>
+              </episode>
+            </xsl:template>
+          </xsl:stylesheet>
+        </XSLT>
+        <RegExp input="$$11" output="\1" dest="15">
+          <expression clear="yes">&lt;episode&gt;(\d+)(?:\+\d+)?&lt;/episode&gt;</expression>
         </RegExp>
-        <RegExp input="$$6" output="\1" dest="16">
-          <expression>(?i)&lt;mapping\s+anidbseason=&quot;$$19&quot;\s+tvdbseason=&quot;(\d+)&quot;\s*&gt;[^&lt;]*;$$18-\d+(?:\+\d+)?;[^&lt;]*&lt;/mapping&gt;</expression>
+        <RegExp input="$$11" output="\1" dest="13">
+          <expression clear="yes">&lt;episode&gt;(?:\d+)\+(\d+)&lt;/episode&gt;</expression>
         </RegExp>
-        <RegExp input="$$6" output="false" dest="12">
-          <expression>(?i)&lt;mapping\s+anidbseason=&quot;$$19&quot;\s+tvdbseason=&quot;\d+&quot;\s*&gt;[^&lt;]*;$$18-\d+(?:\+\d+)?;[^&lt;]*&lt;/mapping&gt;</expression>
-        </RegExp>
-        <RegExp input="$$18" output="\1" dest="15">
-          <expression clear="yes">(\d+)</expression>
-        </RegExp>
-        <RegExp input="$$6" output="\1" dest="15">
-          <expression>(?i)&lt;mapping\s+anidbseason=&quot;$$19&quot;\s+tvdbseason=&quot;\d+&quot;\s*&gt;[^&lt;]*;$$18-(\d+)(?:\+\d+)?;[^&lt;]*&lt;/mapping&gt;</expression>
-        </RegExp>
-        <RegExp input="$$6" output="\1" dest="13">
-          <expression clear="yes">(?i)&lt;mapping\s+anidbseason=&quot;$$19&quot;\s+tvdbseason=&quot;\d+&quot;\s*&gt;[^&lt;]*;$$18-\d+\+(\d+);[^&lt;]*&lt;/mapping&gt;</expression>
+        <RegExp input="$$11" output="\1" dest="16">
+          <expression>&lt;season&gt;(\d+)&lt;/season&gt;</expression>
         </RegExp>
         <expression>(\d+)</expression>
       </RegExp>
@@ -401,6 +413,9 @@
       <RegExp input="" output="" dest="1">
         <expression clear="yes"/>
       </RegExp>
+      <RegExp input="" output="" dest="11">
+        <expression clear="yes"/>
+      </RegExp>
       <expression noclean="1"/>
     </RegExp>
   </GetEpisodeMappingXMLAPI>
@@ -410,26 +425,51 @@
       <RegExp input="$$2$$1" output="\1" dest="6">
         <expression clear="yes" noclean="1">(?i)(&lt;anime\s+anidbid=&quot;$$20&quot;.*?&lt;/anime&gt;)</expression>
       </RegExp>
-      <RegExp input="$$6" output="1" dest="19">
-        <expression clear="yes">(?i)defaulttvdbseason=&quot;$$16&quot;</expression>
-      </RegExp>
       <RegExp input="$$6" output="true" dest="12">
         <expression clear="yes">(?i)defaulttvdbseason=&quot;a&quot;</expression>
       </RegExp>
-      <RegExp input="$$6" output="\1" dest="19">
-        <expression>(?i)&lt;mapping\s+anidbseason=&quot;(\d+)&quot;\s+tvdbseason=&quot;$$16&quot;\s*&gt;[^&lt;]*;\d+-$$15(?:\+\d+)?;[^&lt;]*&lt;/mapping&gt;</expression>
+      <XSLT input="$$6" output="\1" dest="11">
+        <xsl:stylesheet version = "1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:output omit-xml-declaration="yes" indent="yes"/>
+          <xsl:output indent="yes"/>
+          <xsl:strip-space elements="*"/>
+          <xsl:template match="anime">
+            <xsl:variable name="exactmatch" select="mapping-list/mapping[(@tvdbseason=$$16) and (substring-before(.,'-$$15;')!='')]"/>
+            <xsl:variable name="rangematch" select="mapping-list/mapping[(@tvdbseason=$$16) and ((@start&lt;=$$15-@offset) and (@end&gt;=$$15-@offset))]"/>
+            <season>
+              <xsl:choose>
+                <xsl:when test="$exactmatch"><xsl:value-of select="$exactmatch/@anidbseason"/></xsl:when>
+                <xsl:when test="$rangematch"><xsl:value-of select="$rangematch/@anidbseason"/></xsl:when>
+                <xsl:when test="@defaulttvdbseason=$$16">1</xsl:when>
+                <xsl:when test="@defaulttvdbseason='a'">a</xsl:when>
+                <xsl:otherwise/>
+              </xsl:choose>
+            </season>
+            <episode>
+              <xsl:choose>
+                <xsl:when test="$exactmatch"><xsl:value-of select="substring-after(substring-before($exactmatch,'-$$15;'),';')"/></xsl:when>
+                <xsl:when test="$rangematch"><xsl:value-of select="$$15-$rangematch/@offset"/></xsl:when>
+                <xsl:when test="(@defaulttvdbseason=$$16) and @episodeoffset"><xsl:value-of select="$$15-@episodeoffset"/></xsl:when>
+                <xsl:otherwise>$$15</xsl:otherwise>
+              </xsl:choose>
+            </episode>
+          </xsl:template>
+        </xsl:stylesheet>
+      </XSLT>
+      <RegExp input="$$11" output="\1" dest="18">
+        <expression clear="yes">&lt;episode&gt;(\d+)&lt;/episode&gt;</expression>
       </RegExp>
-      <RegExp input="$$15" output="\1" dest="18">
-        <expression clear="yes">(\d+)</expression>
-      </RegExp>
-      <RegExp input="$$6" output="\1" dest="18">
-        <expression>(?i)&lt;mapping\s+anidbseason=&quot;\d+&quot;\s+tvdbseason=&quot;$$16&quot;\s*&gt;[^&lt;]*;(\d+)-$$15(?:\+\d+)?;[^&lt;]*&lt;/mapping&gt;</expression>
+      <RegExp input="$$11" output="\1" dest="19">
+        <expression>&lt;season&gt;(\d+|a)&lt;/season&gt;</expression>
       </RegExp>
       <RegExp input="$$19-$$18" output="&lt;displayseason&gt;1&lt;/displayseason&gt;&lt;displayepisode&gt;\1&lt;/displayepisode&gt;" dest="4">
         <expression clear="yes">1-(\d+)</expression>
       </RegExp>
       <RegExp input="$$12-$$19-$$18" output="&lt;url function=&quot;GetAbsoluteEpisodeReverseMappingXMLAPI&quot; cache=&quot;tvdb-$$20.xml&quot;&gt;http://thetvdb.com/api/1D62F2F90030C444/series/\1/all/en.zip&lt;/url&gt;" dest="4">
-        <expression>true--\d+</expression>
+        <expression>true-a-\d+</expression>
+      </RegExp>
+      <RegExp input="" output="" dest="11">
+        <expression clear="yes"/>
       </RegExp>
       <expression noclean="1"/>   
     </RegExp> 
@@ -438,7 +478,7 @@
   <GetAbsoluteEpisodeReverseMappingXMLAPI clearbuffers="no" dest="4">
     <RegExp input="$$6" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
       <RegExp input="$$1" output="&lt;displayseason&gt;1&lt;/displayseason&gt;&lt;displayepisode&gt;\5&lt;/displayepisode&gt;" dest="6">
-        <expression clear="yes">(?i)&lt;episode&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\1&gt;\s*)*?&lt;episodename&gt;[^&lt;]+&lt;/episodename&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\2&gt;\s*)*?&lt;episodenumber&gt;$$15&lt;/episodenumber&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;seasonnumber&gt;$$16&lt;/seasonnumber&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;absolute_number&gt;(\d+)&lt;/absolute_number&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\6&gt;\s*)*?&lt;/episode&gt;</expression>
+        <expression clear="yes">(?i)&lt;episode&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\1&gt;\s*)*?&lt;episodename&gt;[^&lt;]+&lt;/episodename&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\2&gt;\s*)*?&lt;episodenumber&gt;$$18&lt;/episodenumber&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;seasonnumber&gt;$$16&lt;/seasonnumber&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;absolute_number&gt;(\d+)&lt;/absolute_number&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\6&gt;\s*)*?&lt;/episode&gt;</expression>
       </RegExp>
       <expression noclean="1"/>   
     </RegExp> 
@@ -453,7 +493,7 @@
         <expression clear="yes" noclean="1">(?i)(?:(?:false-(?:1|0))|true-0)-.*?(&lt;episode&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\2&gt;\s*)*?&lt;episodename&gt;[^&lt;]+&lt;/episodename&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;episodenumber&gt;$$13&lt;/episodenumber&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;seasonnumber&gt;$$16&lt;/seasonnumber&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\5&gt;\s*)*?&lt;/episode&gt;)</expression>
       </RegExp>
       <RegExp input="$$12-$$19-$$1" output="\1" dest="5">
-        <expression noclean="1">(?i)true-1-.*?(&lt;episode&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\2&gt;\s*)*?&lt;episodename&gt;[^&lt;]+&lt;/episodename&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;absolute_number&gt;$$18&lt;/absolute_number&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;/episode&gt;)</expression>
+        <expression noclean="1">(?i)true-1-.*?(&lt;episode&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\2&gt;\s*)*?&lt;episodename&gt;[^&lt;]+&lt;/episodename&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\3&gt;\s*)*?&lt;absolute_number&gt;$$15&lt;/absolute_number&gt;\s*(?:&lt;([^&gt;]+)&gt;[^&lt;]*&lt;/\4&gt;\s*)*?&lt;/episode&gt;)</expression>
       </RegExp>
       <RegExp input="$$5" output="&lt;thumb&gt;http://thetvdb.com/banners/\1&lt;/thumb&gt;" dest="4">
         <expression clear="yes">(?i)&lt;filename&gt;([^&lt;]+)&lt;/filename&gt;</expression>
