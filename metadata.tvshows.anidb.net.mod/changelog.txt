@@ -1,3 +1,6 @@
+2.3.0
+Added: Ability to use episode offset attributes in anime-list.xml
+
 2.2.0
 Changed: Episode titles now try to respect "Official language" setting
 
