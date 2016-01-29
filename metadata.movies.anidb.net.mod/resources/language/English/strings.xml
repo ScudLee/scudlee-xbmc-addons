@@ -27,6 +27,10 @@
   <string id="30118">Source tag prefix</string>
   <string id="30119">Add location-based tags</string>
   <string id="30120">Location tag prefix</string>
+  <string id="30121">Allow Adult genres</string>
+  <string id="30122">Never</string>
+  <string id="30123">Only for 18+ Restricted titles</string>
+  <string id="30124">Always</string>
   <!-- Movie -->
   <string id="30300">Enable sets (collections)</string>
   <string id="30301">Get set titles from movie set list</string>

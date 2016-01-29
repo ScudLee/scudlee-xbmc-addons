@@ -25,8 +25,9 @@
     <setting label="30106" type="bool" id="SpecialsInside" default="true"/>
   </category>
   <category label="AniDB 2">
-    <setting label="30108" type="labelenum" id="MinGenreWeight" values="100|200|300|400|500|600" default="500"/>
-    <setting label="30109" type="labelenum" id="GenreCount" values="0|1|2|3|4|5|6|7|8|9" default="6"/>
+    <setting label="30108" type="labelenum" id="MinGenreWeight2" values="100|200|300|400|500|600" default="300"/>
+    <setting label="30109" type="labelenum" id="GenreCount2" values="0|1|2|3|4|5|6|7|8|9" default="5"/>
+    <setting label="30121" type="enum" id="AdultGenres" lvalues="30122|30123|30124" default="1"/>
     <setting label="30110" type="labelenum" id="RatingType" values="Average|Weighted" default="Average"/>
     <setting type="sep"/>
     <setting label="30111" type="bool" id="UseTags" default="false"/>

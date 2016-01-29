@@ -487,97 +487,152 @@
     </RegExp>
   </GetGenresByIDChain> 
   <ParseGenres clearbuffers="no" dest="4">
-    <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
-      <RegExp input="$$1" output="\1" dest="5">
-        <expression clear="yes" noclean="1">(?i)&lt;categories&gt;(.*?)&lt;/categories&gt;</expression>
+    <RegExp input="$$7" output="\1" dest="4">
+      <RegExp input="" output="" dest="7">
+        <expression clear="yes"/>
       </RegExp>
-      <!-- Sort categories by weight -->
-      <RegExp input="$$5" output="\1" dest="7">
-        <expression clear="yes" noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;600&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
+      <RegExp input="" output="" dest="8">
+        <expression clear="yes"/>
       </RegExp>
-      <RegExp input="$$5" output="\1" dest="7+">
-        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;500&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
-      </RegExp>
-      <RegExp input="$$5" output="\1" dest="7+">
-        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;400&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
-      </RegExp>
-      <RegExp input="$$5" output="\1" dest="7+">
-        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;300&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
-      </RegExp>
-      <RegExp input="$$5" output="\1" dest="7+">
-        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;200&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
-      </RegExp>
-      <RegExp input="$$5" output="\1" dest="7+">
-        <expression noclean="1" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;100&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
-      </RegExp>
-      <RegExp input="000|100|200|300|400|500|600|" output="(?!(?:\1)&quot;)" dest="9">
-        <expression clear="yes">(.*)\|$INFO[MinGenreWeight]\|</expression>
-      </RegExp>
-      <!-- Ignore categories below minimum weight -->
-      <RegExp input="$$7" output="\1" dest="7">
-        <expression noclean="1" clear="yes" repeat="yes">(?i)(&lt;category[^&gt;]*weight=&quot;$$9\d+&quot;&gt;[^&lt;]*&lt;name&gt;[^&lt;]+&lt;/name&gt;)</expression>
-      </RegExp>
-      <!-- Always ignore these category ids -->
-      <RegExp input="" output="60|128|129|185|242|255|289" dest="9">
+      <XSLT input="$$1" output="\1" dest="7">
+        <xsl:stylesheet version = "1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:output omit-xml-declaration="yes" indent="yes"/>
+          <xsl:strip-space elements="*"/>
+          <xsl:key name="tagsbyparentid" match="tag" use="@parentid"/>
+          <xsl:variable name="elementsid">2611</xsl:variable>
+          <xsl:variable name="themesid">2607</xsl:variable>
+          <xsl:variable name="hentaiid">2615</xsl:variable>
+          <xsl:variable name="pornographyid">2848</xsl:variable>
+          <xsl:variable name="hentai" select="anime/tags/tag[@id=$hentaiid]"/>
+          <xsl:template match="anime">
+            <genres>
+              <xsl:for-each select="tags">
+                <xsl:call-template name="tagfilter">
+                  <xsl:with-param name="tagid" select="$elementsid"/>
+                  <xsl:with-param name="depth">1</xsl:with-param>
+                </xsl:call-template>
+                <xsl:call-template name="tagfilter">
+                  <xsl:with-param name="tagid" select="$themesid"/>
+                  <xsl:with-param name="depth">1</xsl:with-param>
+                </xsl:call-template> 
+              </xsl:for-each>
+            </genres>
+          </xsl:template>
+          <xsl:template name="tagfilter">
+            <xsl:param name="tagid"/>
+            <xsl:param name="depth"/>
+            <xsl:for-each select="key('tagsbyparentid',$tagid)">
+              <xsl:if test="(@weight&gt;=$INFO[MinGenreWeight2]) and (@localspoiler='false')">
+                <genre>
+                  <xsl:copy-of select="@id|@parentid|@weight|@update"/>
+                  <xsl:attribute name="depth"><xsl:value-of select="$depth"/></xsl:attribute>
+                  <xsl:call-template name="Capitalize">
+                    <xsl:with-param name="text" select="concat(normalize-space(name),' ')"/>
+                  </xsl:call-template>
+                </genre>
+              </xsl:if>
+              <xsl:if test="(@id!=$pornographyid) or ($hentai and ($INFO[AdultGenres]=1)) or ($INFO[AdultGenres]=2)">
+                <xsl:call-template name="tagfilter">
+                  <xsl:with-param name="tagid" select="@id"/>
+                  <xsl:with-param name="depth" select="$depth+1"/>
+                </xsl:call-template>
+              </xsl:if>
+            </xsl:for-each>
+          </xsl:template>
+          <xsl:template name="Capitalize">
+            <xsl:param name="text"/>
+            <xsl:variable name="current" select="substring-before($text, ' ')"/>
+            <xsl:variable name="next" select="substring-after($text, ' ')"/>
+            <xsl:variable name="Capcurrent" select="concat(translate(substring($current,1,1),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),substring($current,2,string-length($current)-1))"/>
+            <xsl:choose>
+              <xsl:when test="$next">
+                <xsl:value-of select="concat($Capcurrent,' ')"/>
+                <xsl:call-template name="Capitalize">
+                  <xsl:with-param name="text" select="$next"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:otherwise><xsl:value-of select="$Capcurrent"/></xsl:otherwise>
+            </xsl:choose>
+          </xsl:template>
+        </xsl:stylesheet>
+      </XSLT>
+      <!-- Always ignore these tag ids (General Lack Of Common Sense|Breaking The Fourth Wall|Absurdly Powerful Student Council|Parental Abandonment) -->
+      <RegExp input="" output="~|2651|2654|5850|2910|" dest="9">
         <expression/>
       </RegExp>
-      <!-- Ignore "Magic" if "Super Power" or "Mahou Shoujo" is present -->
-      <RegExp input="$$7" output="|175" dest="9+">
-        <expression>(?i) id="(18|247)"</expression>
+      <!-- Always ignore these tag parentids (Slapstick|Magic) -->
+      <RegExp input="" output="~|2653|2094|" dest="10">
+        <expression/>
       </RegExp>
-      <!-- Ignore "Super Power" if "Mahou Shoujo" is present -->
-      <RegExp input="$$7" output="|18" dest="9+">
-        <expression>(?i) id="247"</expression>
+      <!-- Prefer their child tags over these tags (Alien|Robot|Sports|Board Games|Card Games|The Arts|Music|School Life|Law And Order|Military) -->
+      <RegExp input="$$7" output="\1|" dest="9+">
+        <expression repeat="yes">(?i) parentid="(2202|2274|2881|2756|6191|2883|2794|2869|2885|36)"</expression>
       </RegExp>
-      <!-- Ignore "Fantasy World" if "Fantasy" is present -->
-      <RegExp input="$$7" output="|291" dest="9+">
-        <expression>(?i) id="15"</expression>
+      <!-- Prefer these tags over their child tags (Human Enhancement|Ecchi) -->
+      <RegExp input="$$7" output="\1|" dest="10+">
+        <expression repeat="yes">(?i) id="(2636|2856)"</expression>
       </RegExp>
-      <!-- Ignore "Fantasy" if "Contemporary Fantasy" or "Dark Fantasy" is present -->
-      <RegExp input="$$7" output="|15" dest="9+">
-        <expression>(?i) id="(183|265)"</expression>
+      <!-- Ignore all child tags of Romance except Shoujo/Shounen Ai -->
+      <RegExp input="$$7" output="\1|" dest="9+">
+        <expression>(?i) id="(?!(?:2782"|2783"))(\d+)" parentid="2858"</expression>
       </RegExp>
-      <!-- Ignore "Catgirls" if "Juujin" is present -->
-      <RegExp input="$$7" output="|202" dest="9+">
-        <expression>(?i) id="201"</expression>
+      <!-- Ignore "Fantasy" if "High/Contemporary/Dark Fantasy" is present -->
+      <RegExp input="$$7" output="2849|" dest="9+">
+        <expression>(?i) id="(2647|2648|2649)"</expression>
       </RegExp>
-      <!-- Ignore "Genetic Modification" and "Cyborgs" if "Human Enhancement" is present -->
-      <RegExp input="$$7" output="|120|329" dest="9+">
-        <expression>(?i) id="328"</expression>
+      <!-- Ignore "Ninja" if "Martial Arts" is present -->
+      <RegExp input="$$7" output="2572|" dest="9+">
+        <expression>(?i) id="2282"</expression>
       </RegExp>
-      <!-- Ignore "Transforming Robots" if "Piloted Robots" is present -->
-      <RegExp input="$$7" output="|149" dest="9+">
-        <expression>(?i) id="118"</expression>
+      <!-- Ignore "Magic" if "Super Power" or "Magical Girl" is present -->
+      <RegExp input="$$7" output="2094|" dest="9+">
+        <expression>(?i) id="(2623|2503)"</expression>
       </RegExp>
-      <!-- Ignore "Piloted Robots" if "Mecha" is present -->
-      <RegExp input="$$7" output="|118" dest="9+">
-        <expression>(?i) id="13"</expression>
+      <!-- Ignore "Super Power" if "Magical Girl" is present -->
+      <RegExp input="$$7" output="2623|" dest="9+">
+        <expression>(?i) id="2503"</expression>
       </RegExp>
-      <!-- Ignore "Ninjas" if "Martial Arts" is present -->
-      <RegExp input="$$7" output="|29" dest="9+">
-        <expression>(?i) id="20"</expression>
+      <!-- Ignore "Transforming Craft" if "Piloted Robot" is present -->
+      <RegExp input="$$7" output="2644|" dest="9+">
+        <expression>(?i) id="2645"</expression>
       </RegExp>
-      <!-- Ignore "Cops" if "Special Squads" is present -->
-      <RegExp input="$$7" output="|177" dest="9+">
-        <expression>(?i) id="203"</expression>
+      <!-- Ignore "Space Travel" if "Space Opera" is present -->
+      <RegExp input="$$7" output="2639|" dest="9+">
+        <expression>(?i) id="5929"</expression>
       </RegExp>
-      <!-- Ignore "Space" if "Space Travel" is present -->
-      <RegExp input="$$7" output="|19" dest="9+">
-        <expression>(?i) id="174"</expression>
+      <XSLT input="$$7" output="\1" dest="8">
+        <xsl:stylesheet version = "1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:output omit-xml-declaration="yes" indent="yes"/>
+          <xsl:template match="genres">
+            <genres>
+              <xsl:for-each select="genre">
+                <xsl:sort select="@weight" data-type="number" order="descending"/>
+                <xsl:sort select="@depth" data-type="number" order="ascending"/>
+                <xsl:sort select="translate(@update,'-','')" data-type="number" order="ascending"/>
+                  <xsl:if test="(not(substring-before('$$10',concat('|',@parentid,'|')))) and
+                                (not(substring-before('$$9',concat('|',@id,'|'))))">
+                    <xsl:copy-of select="."/>
+                  </xsl:if>
+              </xsl:for-each>
+             </genres>
+          </xsl:template>
+        </xsl:stylesheet>
+      </XSLT>
+      <RegExp input="" output="" dest="7">
+        <expression clear="yes"/>
       </RegExp>
-      <RegExp input="$$7" output="&lt;genre&gt;\1&lt;/genre&gt;" dest="6">
-        <expression noclean="1" clear="yes" repeat="yes">(?i)&lt;category[^&gt;]*id=&quot;(?!(?:$$9)&quot;)\d+&quot;[^&gt;]*parentid=&quot;(?!(?:6|22|23|24|50|83|116|153|197|216|268|269|279|280|282|289|514)&quot;)\d+&quot;[^&gt;]*&gt;[^&lt;]*&lt;name&gt;([^&lt;]+)&lt;/name&gt;</expression>
-      </RegExp>
-      <RegExp input="$$17" output="\1" dest="6+">
-        <expression noclean="1" repeat="yes">(?i)(&lt;genre&gt;.*?&lt;/genre&gt;)</expression>
-      </RegExp>
-      <RegExp input="$$18" output="\1" dest="6">
-        <expression noclean="1" repeat="yes">(?i)(&lt;genre&gt;.*?&lt;/genre&gt;)</expression>
-      </RegExp>
-      <!-- Only take up to the specified number of genres -->
-      <RegExp input="$$6" output="\1" dest="8">
-        <expression clear="yes" noclean="1">(?i)((?:&lt;genre&gt;[^&lt;]+&lt;/genre&gt;){0,$INFO[GenreCount]})</expression>
-      </RegExp>
+      <XSLT input="$$8" output="\1" dest="7">
+        <xsl:stylesheet version = "1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:output omit-xml-declaration="yes" indent="yes"/>
+          <xsl:template match="genres">
+            <details>
+              <xsl:for-each select="genre">
+                <xsl:if test="position()&lt;=$INFO[GenreCount2]"><xsl:copy-of select="."/></xsl:if>
+              </xsl:for-each>
+            </details>
+          </xsl:template>
+        </xsl:stylesheet>
+      </XSLT>
       <expression noclean="1"/>
     </RegExp>
   </ParseGenres>
