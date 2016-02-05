@@ -647,9 +647,17 @@
   </GetPlotByIDChain> 
   <ParsePlot clearbuffers="no" dest="4">
     <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
-      <RegExp input="$$1" output="\1" dest="6">
-        <expression clear="yes">(?&lt;!/charactertype&gt;\n)&lt;description[^&gt;]*&gt;([^&lt;]*?)&lt;/description&gt;[^&lt;]*&lt;[^/]</expression>
+      <RegExp input="" output="" dest="6">
+        <expression clear="yes"/>
       </RegExp>
+      <XSLT input="$$1" output="\1" dest="6">
+        <xsl:stylesheet version = "1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:output omit-xml-declaration="yes" indent="yes"/>
+          <xsl:template match="anime">
+            <xsl:value-of select="description"/>
+          </xsl:template>
+        </xsl:stylesheet>
+      </XSLT>
       <!-- Plot filtering -->
       <RegExp input="$$6" output="\1 " dest="6">
         <expression repeat="yes" noclean="1">([^\t]*)\t?</expression>
@@ -684,29 +692,29 @@
       <RegExp input="$$6 [animenewsnetwork]" output="\1" dest="6">
         <expression repeat="yes" noclean="1">(?i)(.*?)(?:(\[)|(\()|\*)(?(2)[^]]|(?(3)[^)]|[^*]))*$$9(?(2)[^]]|(?(3)[^)]|[^*]))*(?(2)\]|(?(3)\)|\*))</expression>
       </RegExp>
-      <RegExp input="\n$$6\nfrom animenewsnetwork\n" output="\1" dest="6">
-        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[^\r\n]*$$7[: ]*$$9[^\r\n]*</expression>
+      <RegExp input="$$6\nfrom animenewsnetwork\n" output="\1" dest="6">
+        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[^\r\n]*$$7[: ]*[^\r\n]+</expression>
       </RegExp>
       <RegExp input="\n$$6\nfrom http://\n" output="\1" dest="6">
         <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[^\r\n]*$$7[: ]*http://[^\r\n]*</expression>
       </RegExp>
       <RegExp input="\n$$6\nann summary\n" output="\1" dest="6">
-        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[^\r\n]*$$9[ ]*(?:summary|decription)[^\r\n]*</expression>
+        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[^\r\n]*$$9\s*(?:summary|description)[^\r\n]*</expression>
       </RegExp>
       <RegExp input="\n$$6\nhttp://\n" output="\1" dest="6">
-        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[ ]*http://[^\r\n ]*</expression>
+        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n\s*http://[^\r\n\s]*</expression>
       </RegExp>
       <RegExp input="\n$$6\nanimenfo\n" output="\1" dest="6">
-        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[ ]*$$9[ ]*</expression>
+        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n\s*$$9\s*</expression>
       </RegExp>
       <RegExp input="$$6 [i][/i]" output="\1" dest="6">
         <expression repeat="yes" noclean="1">(?i)(.*?)\[i][^\[]*\[/i]</expression>
       </RegExp>
       <RegExp input="\n$$6\ndescription by\n" output="\1" dest="6">
-        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n(\*|-)?(\*|-)?[ ]*(?:(?:description|written) by)[^\r\n]*</expression>
+        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[\*-&#8212;]*\s*(?:(?:description|written) by)[^\r\n]*</expression>
       </RegExp>
       <RegExp input="$$6" output="\1" dest="6">
-        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[~-]\s+(?:translated and adapted|adapted and translated)[^\r\n]*cranston[^\r\n]*</expression>
+        <expression repeat="yes" noclean="1">(?i)(.*?)\r?\n[~-&#8212;]\s+(?:translated and adapted|adapted and translated)[^\r\n]*cranston[^\r\n]*</expression>
       </RegExp>
       <RegExp input="$$6" output="\1" dest="6">
         <expression noclean="1">(?:\r?\n)*(.*)</expression>
