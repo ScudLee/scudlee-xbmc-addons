@@ -1,3 +1,7 @@
+2.4.0
+Fixed: Genre parsing
+Fixed: Minor plot handling fixes
+
 2.3.0
 Added: Ability to use episode offset attributes in anime-list.xml
 

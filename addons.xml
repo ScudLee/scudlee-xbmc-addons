@@ -2,7 +2,7 @@
 <addons>
 <addon id="metadata.common.anidb.net"
        name="AniDB.net [MOD] common scraper functions"
-       version="1.1.1"
+       version="1.2.0"
        provider-name="scudlee">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0"/>
@@ -19,7 +19,7 @@
 
 <addon id="metadata.movies.anidb.net.mod"
        name="AniDB.net [MOD]"
-       version="2.1.0"
+       version="2.2.0"
        provider-name="scudlee">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0"/>
@@ -40,7 +40,7 @@
 
 <addon id="metadata.tvshows.anidb.net.mod"
        name="AniDB.net [MOD]"
-       version="2.3.0"
+       version="2.4.0"
        provider-name="scudlee">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0"/>
