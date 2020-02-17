@@ -2,7 +2,6 @@
 <settings>
   <category label="General">
     <setting label="30000" type="bool" id="Google" default="false"/>
-    <setting label="30005" type="labelenum" id="IdFrom" values="AniDB.net|TheTVDB.com" default="AniDB.net"/>
     <setting type="sep"/>
     <setting label="30001" type="text" id="AnimeTitlesUrl" default="https://raw.github.com/ScudLee/anime-lists/master/animetitles.xml"/>
     <setting label="30002" type="text" id="AnimeMappingListUrl" default="https://raw.github.com/ScudLee/anime-lists/master/anime-list.xml"/>
@@ -13,7 +12,7 @@
   </category>
   <category label="AniDB 1">
     <setting label="30100" type="bool" id="OfficialName" default="false"/>
-    <setting label="30101" type="labelenum" id="OfficialLanguage" values="en|de|fr|it|cs|sk|hu|pl|ru|ja|zh" default="en" enable="eq(-1,true)"/>
+    <setting label="30101" type="labelenum" id="OfficialLanguage" values="en|de|fr|it|cs|sk|hu|pl|ru|ja|zh" default="en" />
     <setting type="sep"/>
     <setting label="30102" type="bool" id="Prequels" default="true"/>
     <setting label="30103" type="labelenum" id="AlternativePrequelLinkType" values="Parent Story|Alternative Setting|Side Story" default="Parent Story" enable="eq(-1,true)"/>
@@ -23,27 +22,30 @@
     <setting label="Hidden" type="bool" id="AppearsInAsMain" default="false" visible="false"/>
     <setting label="30105" type="bool" id="SpecialsAtEnd" default="true"/>
     <setting label="30106" type="bool" id="SpecialsInside" default="true"/>
+    <setting label="30128" type="bool" id="KeepSource" default="true"/>
   </category>
   <category label="AniDB 2">
     <setting label="30108" type="labelenum" id="MinGenreWeight2" values="100|200|300|400|500|600" default="300"/>
     <setting label="30109" type="labelenum" id="GenreCount2" values="0|1|2|3|4|5|6|7|8|9" default="5"/>
     <setting label="30121" type="enum" id="AdultGenres" lvalues="30122|30123|30124" default="1"/>
-    <setting label="30110" type="labelenum" id="RatingType" values="Average|Weighted" default="Average"/>
+    <setting type="sep"/>
+    <setting label="30129" type="bool" id="GetRatings" default="true"/>
+    <setting label="30110" type="labelenum" id="RatingType" values="Average|Weighted" default="Average" visible="eq(-1,true)"/>
+    <setting label="30130" type="bool" id="OldRatings" default="false" visible="eq(-2,true)"/>
     <setting type="sep"/>
     <setting label="30111" type="bool" id="UseTags" default="false"/>
     <setting label="30112" type="bool" id="AddTagsToAll" default="false" visible="eq(-1,true)"/>
     <setting label="30113" type="text" id="TagList" subsetting="true" default="Anime" visible="eq(-2,true)" enable="eq(-1,true)"/>
-    <setting label="30117" type="bool" id="SourceTags" subsetting="true" default="false" visible="eq(-3,true)"/>
+    <setting label="30117" type="bool" id="SourceTags" default="false" visible="eq(-3,true)"/>
     <setting label="30118" type="text" id="SourcePrefix" subsetting="true" default="Original Work: " visible="eq(-4,true)" enable="eq(-1,true)"/>
-    <setting label="30119" type="bool" id="LocationTags" subsetting="true" default="false" visible="eq(-5,true)"/>
+    <setting label="30119" type="bool" id="LocationTags" default="false" visible="eq(-5,true)"/>
     <setting label="30120" type="text" id="LocationPrefix" subsetting="true" default="Location: " visible="eq(-6,true)" enable="eq(-1,true)"/>
-    <setting label="30114" type="bool" id="AniDBTags" default="false" visible="eq(-7,true)"/>
-    <setting label="30115" type="labelenum" id="MinApproval" subsetting="true" values="1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20" default="10" visible="eq(-8,true)" enable="eq(-1,true)"/>
-    <setting label="30116" type="bool" id="IncludeSpoilerTags" subsetting="true" default="false" visible="eq(-9,true)" enable="eq(-2,true)"/>
+    <setting label="30125" type="bool" id="PreciseLocation" subsetting="true" default="true" visible="eq(-7,true)" enable="eq(-2,true)"/>
+    <setting label="30126" type="bool" id="AudienceTags" default="false" visible="eq(-8,true)"/>
+    <setting label="30127" type="text" id="AudiencePrefix" subsetting="true" default="Audience: " visible="eq(-9,true)" enable="eq(-1,true)"/>
   </category>
   <category label="TheTVDB">
     <setting label="30200" type="bool" id="Fanarts" default="true"/>
-    <setting label="30202" type="bool" id="NoFanartContinue" default="true" enable="eq(-1,true)"/>
     <setting type="sep"/>
     <setting label="30203" type="bool" id="ExtraDetails" default="true"/>
   </category>

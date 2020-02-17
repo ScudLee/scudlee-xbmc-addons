@@ -2,7 +2,7 @@ AniDB.net Scraper for Movies [Mod]
 ====================================
 This is a heavily modified version of the AniDB.net TV show scraper intended for use with movies.
 
-For support please use the [XBMC forum thread](http://forum.xbmc.org/showthread.php?tid=142835).
+For support please use the [Kodi forum thread](https://forum.kodi.tv/showthread.php?tid=142835).
 
 Settings
 --------
@@ -11,9 +11,6 @@ Settings
 
 *   **Use Google Search** - Use Google to perform the initial title search.
     Not as reliable as the default search.
-
-*   **Store anime ID from** - Site to store the ID from.  Either AniDB.net or imdb.com.
-    Use imdb.com if you use the extra fanart downloader.
 
 *   **Anime list URL** - Location of the animetitles.xml used in the title search.
     A more up-to-date version can be found direct from AniDB.net if needed.
@@ -25,7 +22,7 @@ Settings
     default list, you can.  You only need to include the mappings you wish to change/add to.
 
 *   **Personal anime mapping URL** - Location of your personal mapping list.
-    Must be a URL (with protocol).  Direct folder locations won't work, but file:/// protocol does.
+    Must be a URL (with protocol).  Direct folder locations won't work.
 
 *   **Delay parameter** - Controls the amount of "busywork" the scraper performs when used.
     Increase this if you find yourself getting banned a lot.
@@ -35,7 +32,7 @@ Settings
 *   **Use official name instead of main name** - This determines the title displayed for the movie (and its set).
 
 *   **Official name language** - Which official language to use if the official name is to be used.
-    The main title will be used if no offcial title exists in the language chosen.
+    The main title will be used if no official title exists in the language chosen.
 
 *   **Enable prequel lookup** - Only used if the movie is not in the mapping list.
     Unlikely you should need to change this.
@@ -43,6 +40,8 @@ Settings
 *   **Alternative prequel link type** - As above.
 
 *   **Return only single Animation studio** - In rare cases multiple studios may be returned.
+
+*   **Keep source line in plot** - Keeps the "Based on..." line (or similar) as the last line of the plot.
 
 ### AniDB 2 ###
 
@@ -52,7 +51,11 @@ Settings
 *   **Number of Genres returned** - Maximum number of genres returned per movie.  
     Actual amount may be lower.
 
-*   **Use rating** - Either Average or Weighted.  Weighted takes into account ballot-stuffing, so is preferred.
+*   **Fetch ratings** - Whether to fetch anidb ratings or not
+
+*   **Rating type** - Either Average or Weighted.  Weighted takes into account ballot-stuffing, so is preferred.
+
+*   **Pre-Krypton ratings** - Use the old rating format (for Gotham or older)
 
 *   **Use tags** - Whether to allow the scraper to automatically add tags for your movies.
 
@@ -69,11 +72,12 @@ Settings
 
 *   **Location tag prefix** - Prefix to add to location-based tags (to aid in sorting).  Remember to include a space at the end.
 
-*   **Add tags from AniDB** - Whether to use the tags used on AniDB.
+*   **Only use the most precise locations** - Disable to add the entire chain of locations as tags. 
+    e.g. Earth->Asia->Japan->Tokyo->Akihabara
+	
+*   **Add target audience-based tags** - Add tags based on any "Target Audience" categories.
 
-*   **Minimum Approval for tags** - Similar to genre weight.  Higher approval = Better fit.
-
-*   **Include spoiler tags** - SPOILER ALERT!
+*   **Audience tag prefix** - Prefix to add to target audience-based tags (to aid in sorting).  Remember to include a space at the end.
 
 ### Movie ###
 
@@ -88,7 +92,7 @@ Settings
     to add to or override those in the movie-set list.
 
 *   **Personal anime movie set list URL** - Location of your personal movie-set list.
-    Must be a URL (with protocol).  Direct folder locations won't work, but file:/// protocol does.
+    Must be a URL (with protocol).  Direct folder locations won't work.
 
 *   **Get set titles from themoviedb.org** - Whether to get the set titles from themoviedb.org.
     Can be used in conjunction with the movie-set list.
@@ -101,9 +105,6 @@ Settings
 ### TheTVDB ###
 
 *   **Enable fanarts** - Whether to download fanart or not.
-
-*   **Continue lookup if no fanart found** - Only used if the show is not in the mapping list.
-    Determines whether to continue searching TVDB if the first match has no fanart.
 
 
 Example Personal Movie-set list

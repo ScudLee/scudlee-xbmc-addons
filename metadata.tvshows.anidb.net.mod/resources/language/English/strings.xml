@@ -19,7 +19,7 @@
   <string id="30107">Treat Secondary characters cast as Main</string>
   <string id="30108">Minimum Genre weight</string>
   <string id="30109">Number of Genres returned</string>
-  <string id="30110">Use rating</string>
+  <string id="30110">Rating type</string>
   <string id="30111">Use tags</string>
   <string id="30112">Auto-add anime tags to all shows</string>
   <string id="30113">Use these tags (separate with a semi-colon)</string>
@@ -34,6 +34,12 @@
   <string id="30122">Never</string>
   <string id="30123">Only for 18+ Restricted titles</string>
   <string id="30124">Always</string>
+  <string id="30125">Only use the most precise locations</string>
+  <string id="30126">Add target audience-based tags</string>
+  <string id="30127">Target audience tag prefix</string>
+  <string id="30128">Keep source line in plot</string>
+  <string id="30129">Fetch ratings</string>
+  <string id="30130">Pre-Krypton ratings</string>
   <!-- TheTVDB -->
   <string id="30200">Enable fanarts</string>
   <string id="30202">Continue lookup if no fanart found</string>

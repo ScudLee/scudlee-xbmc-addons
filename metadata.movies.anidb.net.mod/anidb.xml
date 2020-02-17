@@ -1,167 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <scraper framework="1.1" date="2011-04-18">
 
-  <CreateSearchUrl clearbuffers="no" dest="4">  
-    <RegExp conditional="Google" input="$$4" output="&lt;url gzip=&quot;yes&quot;&gt;http://www.google.com/search?q=site:anidb.net\1&amp;filter=0&lt;/url&gt;" dest="4">
-      <RegExp input="$$1%20$$2" output="+\1" dest="4">
-        <expression clear="yes" repeat="yes">(?i)(?:%[a-f0-9]{2}|[!.()-])*([a-z0-9]+)?</expression>
-      </RegExp>
-      <expression clear="yes" noclean="1"/>
-    </RegExp> 
-    <RegExp conditional="!Google" input="$$1" output="&lt;url gzip=&quot;yes&quot; cache=&quot;animetitles.xml&quot;&gt;$INFO[AnimeTitlesUrl]&lt;/url&gt;" dest="4">
-      <RegExp input="$$1" output="\1" dest="18">
-        <expression clear="yes"/>
-      </RegExp>
-      <expression clear="yes"/>
-    </RegExp>
-    <RegExp input="" output="" dest="1">
-      <expression clear="yes"/>
-    </RegExp>
-  </CreateSearchUrl>
+	<CreateSearchUrl clearbuffers="no" dest="4">
+		<RegExp conditional="Google" input="$$4" output="&lt;url gzip=&quot;yes&quot;&gt;http://www.google.com/search?q=site:anidb.net\1&amp;filter=0&lt;/url&gt;" dest="4">
+			<RegExp input="$$1%20$$2" output="+\1" dest="4">
+				<expression clear="yes" repeat="yes">(?i)(?:%[a-f0-9]{2}|[!.()-])*([a-z0-9]+)?</expression>
+			</RegExp>
+			<expression clear="yes" noclean="1"/>
+		</RegExp>
+		<RegExp conditional="!Google" input="$$1" output="&lt;url gzip=&quot;yes&quot; cache=&quot;animetitles.xml&quot;&gt;$INFO[AnimeTitlesUrl]&lt;/url&gt;" dest="4">
+			<RegExp input="$$1" output="\1" dest="18">
+				<expression clear="yes"/>
+			</RegExp>
+			<expression clear="yes"/>
+		</RegExp>
+		<RegExp input="" output="" dest="1">
+			<expression clear="yes"/>
+		</RegExp>
+	</CreateSearchUrl>
 
-  <GetDetails clearbuffers="no" dest="3">
-    <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
-      <RegExp input="$$1" output="\1" dest="20">
-        <expression clear="yes">(?i)&lt;anime\s+id=&quot;(\d+)&quot;</expression>
-      </RegExp>
-      <RegExp conditional="PersonalAnimeMapping" input="" output="&lt;url function=&quot;GetPersonalAnimeMapping&quot; cache=&quot;pers-anime-list.xml&quot;&gt;$INFO[PersonalAnimeMappingUrl]&lt;/url&gt;" dest="8">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;url function=&quot;LoadAnimeMapping&quot; cache=&quot;anime-list.xml&quot;&gt;$INFO[AnimeMappingListUrl]&lt;/url&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetIDByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetTitleByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetOriginalTitleByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetStartDateByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp conditional="UseTags" input="" output="&lt;chain function=&quot;GetTagsByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetRatingByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetGenresByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetPlotByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetCastByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetWritersByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetDirectorsByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetStudiosByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetArtworkByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;GetMovieData&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <RegExp input="$$1" output="&lt;id&gt;$$20&lt;/id&gt;&lt;plot&gt;### YOU ARE BANNED FROM ANIDB.NET ###\nWAIT SOME TIME UNTIL YOU ARE UNBANNED&lt;/plot&gt;&lt;episodeguide&gt;&lt;url gzip=&quot;yes&quot; cache=&quot;$$2.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=$$2&lt;/url&gt;&lt;/episodeguide&gt;" dest="8">
-        <expression>(?i)&lt;error&gt;banned&lt;/error&gt;</expression>
-      </RegExp>
-      <RegExp input="" output="&lt;chain function=&quot;StartDelayLoop&quot;&gt;&amp;&lt;/chain&gt;" dest="8+">
-        <expression/> 
-      </RegExp>
-      <expression noclean="1"/>
-    </RegExp>
-  </GetDetails>
+	<GetDetails clearbuffers="no" dest="3">
+		<RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
+			<RegExp input="$$1" output="\1" dest="20">
+				<expression clear="yes">(?i)&lt;anime\s+id=&quot;(\d+)&quot;</expression>
+			</RegExp>
+			<RegExp conditional="PersonalAnimeMapping" input="" output="&lt;url function=&quot;GetPersonalAnimeMapping&quot; cache=&quot;pers-anime-list.xml&quot;&gt;$INFO[PersonalAnimeMappingUrl]&lt;/url&gt;" dest="8">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;url function=&quot;LoadAnimeMapping&quot; cache=&quot;anime-list.xml&quot;&gt;$INFO[AnimeMappingListUrl]&lt;/url&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetIDByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetTitleByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetOriginalTitleByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetStartDateByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp conditional="UseTags" input="" output="&lt;chain function=&quot;GetTagsByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp conditional="GetRatings" input="" output="&lt;chain function=&quot;GetRatingByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetGenresByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetPlotByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetCastByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetWritersByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetDirectorsByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetStudiosByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetArtworkByIDChain&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;GetMovieData&quot;&gt;$$20&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<RegExp input="$$1" output="&lt;id&gt;$$20&lt;/id&gt;&lt;plot&gt;### YOU ARE BANNED FROM ANIDB.NET ###\nWAIT SOME TIME UNTIL YOU ARE UNBANNED&lt;/plot&gt;&lt;episodeguide&gt;&lt;url gzip=&quot;yes&quot; cache=&quot;$$2.xml&quot;&gt;http://api.anidb.net:9001/httpapi?request=anime&amp;client=xbmcscrap&amp;clientver=1&amp;protover=1&amp;aid=$$2&lt;/url&gt;&lt;/episodeguide&gt;" dest="8">
+				<expression>(?i)&lt;error&gt;banned&lt;/error&gt;</expression>
+			</RegExp>
+			<RegExp input="" output="&lt;chain function=&quot;StartDelayLoop&quot;&gt;&amp;&lt;/chain&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetDetails>
 
-  <GetMovieData dest="3">
-    <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
-      <RegExp input="" output="" dest="8">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="" dest="6">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="" dest="5">
-        <expression/>
-      </RegExp>
-      <RegExp conditional="UseSets" input="$$7" output="\1" dest="8">
-        <RegExp conditional="UseTMDBSets" input="$$12" output="&lt;chain function=&quot;GetTMDBSetByIdChain&quot;&gt;\1&lt;/chain&gt;" dest="5">
-          <expression>((?:tt)?\d+)</expression>
-        </RegExp>
-        <RegExp conditional="UseAniListSets" input="$$1" output="&lt;chain function=&quot;GetAnimeListSetByIDChain&quot;&gt;\1&lt;/chain&gt;" dest="6">
-          <expression/>
-        </RegExp>
-        <RegExp input="$$5$$6" output="\1" dest="7">
-          <expression noclean="1" clear="yes"/>
-        </RegExp>
-        <RegExp conditional="PreferTMDBSets" input="$$6$$5" output="\1" dest="7">
-          <expression noclean="1"/>
-        </RegExp>
-        <expression noclean="1"/>
-      </RegExp>
-      <RegExp input="$$12" output="&lt;chain function=&quot;GetTMDBCertificationsByIdChain&quot;&gt;\1&lt;/chain&gt;" dest="8+">
-        <expression>((?:tt)?\d+)</expression>
-      </RegExp>
-      <RegExp input="$$12" output="&lt;chain function=&quot;GetTMDBTrailerByIdChain&quot;&gt;\1&lt;/chain&gt;" dest="8+">
-        <expression>((?:tt)?\d+)</expression>
-      </RegExp>
-      <expression noclean="1"/>
-    </RegExp>
-  </GetMovieData>
+	<GetMovieData dest="3">
+		<RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
+			<RegExp input="" output="" dest="8">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="" dest="6">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="" dest="5">
+				<expression/>
+			</RegExp>
+			<RegExp conditional="UseSets" input="$$7" output="\1" dest="8">
+				<RegExp conditional="UseTMDBSets" input="$$12" output="&lt;chain function=&quot;GetTMDBSetByIdChain&quot;&gt;\1&lt;/chain&gt;" dest="5">
+					<expression>((?:tt)?\d+)</expression>
+				</RegExp>
+				<RegExp conditional="UseAniListSets" input="$$1" output="&lt;chain function=&quot;GetAnimeListSetByIDChain&quot;&gt;\1&lt;/chain&gt;" dest="6">
+					<expression/>
+				</RegExp>
+				<RegExp input="$$5$$6" output="\1" dest="7">
+					<expression noclean="1" clear="yes"/>
+				</RegExp>
+				<RegExp conditional="PreferTMDBSets" input="$$6$$5" output="\1" dest="7">
+					<expression noclean="1"/>
+				</RegExp>
+				<expression noclean="1"/>
+			</RegExp>
+			<RegExp input="$$12" output="&lt;chain function=&quot;GetTMDBCertificationsByIdChain&quot;&gt;\1&lt;/chain&gt;" dest="8+">
+				<expression>((?:tt)?\d+)</expression>
+			</RegExp>
+			<RegExp input="$$12" output="&lt;chain function=&quot;GetTMDBTrailerByIdChain&quot;&gt;\1&lt;/chain&gt;" dest="8+">
+				<expression>((?:tt)?\d+)</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetMovieData>
 
-  <GetAnimeListSetByIDChain clearbuffers="no" dest="3">
-    <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
-      <RegExp input="$$1" output="\1" dest="20">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="" dest="2">
-        <expression/>
-      </RegExp> 
-      <RegExp input="" output="" dest="8">
-        <expression/>
-      </RegExp> 
-      <RegExp conditional="PersonalMovieSetList" input="" output="&lt;url function=&quot;LoadPersonalMovieSetList&quot; cache=&quot;pers-movieset-list.xml&quot;&gt;$INFO[PersonalMovieSetListUrl]&lt;/url&gt;" dest="8">
-        <expression/>
-      </RegExp>
-      <RegExp input="" output="&lt;url function=&quot;ParseAnimeListSet&quot; cache=&quot;anime-movieset-list.xml&quot;&gt;$INFO[AnimeSetListUrl]&lt;/url&gt;" dest="8+">
-        <expression/>
-      </RegExp>
-      <expression noclean="1"/>
-    </RegExp>
-  </GetAnimeListSetByIDChain>
-  <LoadPersonalMovieSetList clearbuffers="no" dest="3">
-    <RegExp input="" output="&lt;details&gt;&lt;/details&gt;" dest="3">
-      <RegExp input="$$1" output="\1" dest="2">
-        <expression noclean="1"/>
-      </RegExp>
-      <expression noclean="1"/>
-    </RegExp>
-  </LoadPersonalMovieSetList>
-  <ParseAnimeListSet dest="4">
-    <RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
-      <RegExp input="$$2$$1" output="\1" dest="6">
-        <expression noclean="1" clear="yes">&lt;anime\s+anidbid=&quot;$$20&quot;.*?&lt;titles&gt;(.*?)&lt;/titles&gt;</expression>
-      </RegExp>
-      <RegExp input="$$6" output="&lt;set&gt;\1&lt;/set&gt;" dest="8">
-        <expression clear="yes">&lt;title type=&quot;main&quot;\s+xml:lang=&quot;x-jat&quot;&gt;([^&lt;]+)&lt;/title&gt;</expression>
-      </RegExp>
-      <RegExp conditional="OfficialName" input="$$6" output="&lt;set&gt;\1&lt;/set&gt;" dest="8">
-        <expression>&lt;title type=&quot;Official&quot;\s+xml:lang=&quot;$INFO[OfficialLanguage]&quot;&gt;([^&lt;]+)&lt;/title&gt;</expression>
-      </RegExp>
-      <RegExp conditional="PersonalMovieSetList" input="$$6" output="&lt;set&gt;\1&lt;/set&gt;" dest="8">
-        <expression>&lt;title&gt;([^&lt;]+)&lt;/title&gt;</expression>
-      </RegExp>
-      <expression noclean="1"/>
-    </RegExp>
-  </ParseAnimeListSet>
+	<GetAnimeListSetByIDChain clearbuffers="no" dest="3">
+		<RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="3">
+			<RegExp input="$$1" output="\1" dest="20">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="" dest="2">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="" dest="8">
+				<expression/>
+			</RegExp>
+			<RegExp conditional="PersonalMovieSetList" input="" output="&lt;url function=&quot;LoadPersonalMovieSetList&quot; cache=&quot;pers-movieset-list.xml&quot;&gt;$INFO[PersonalMovieSetListUrl]&lt;/url&gt;" dest="8">
+				<expression/>
+			</RegExp>
+			<RegExp input="" output="&lt;url function=&quot;ParseAnimeListSet&quot; cache=&quot;anime-movieset-list.xml&quot;&gt;$INFO[AnimeSetListUrl]&lt;/url&gt;" dest="8+">
+				<expression/>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</GetAnimeListSetByIDChain>
+	<LoadPersonalMovieSetList clearbuffers="no" dest="3">
+		<RegExp input="" output="&lt;details&gt;&lt;/details&gt;" dest="3">
+			<RegExp input="$$1" output="\1" dest="2">
+				<expression noclean="1"/>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</LoadPersonalMovieSetList>
+	<ParseAnimeListSet dest="4">
+		<RegExp input="$$8" output="&lt;details&gt;\1&lt;/details&gt;" dest="4">
+			<RegExp input="$$2$$1" output="\1" dest="6">
+				<expression noclean="1" clear="yes">&lt;anime\s+anidbid=&quot;$$20&quot;.*?&lt;titles&gt;(.*?)&lt;/titles&gt;</expression>
+			</RegExp>
+			<RegExp input="$$6" output="&lt;set&gt;\1&lt;/set&gt;" dest="8">
+				<expression clear="yes">&lt;title type=&quot;main&quot;\s+xml:lang=&quot;x-jat&quot;&gt;([^&lt;]+)&lt;/title&gt;</expression>
+			</RegExp>
+			<RegExp conditional="OfficialName" input="$$6" output="&lt;set&gt;\1&lt;/set&gt;" dest="8">
+				<expression>&lt;title type=&quot;Official&quot;\s+xml:lang=&quot;$INFO[OfficialLanguage]&quot;&gt;([^&lt;]+)&lt;/title&gt;</expression>
+			</RegExp>
+			<RegExp conditional="PersonalMovieSetList" input="$$6" output="&lt;set&gt;\1&lt;/set&gt;" dest="8">
+				<expression>&lt;title&gt;([^&lt;]+)&lt;/title&gt;</expression>
+			</RegExp>
+			<expression noclean="1"/>
+		</RegExp>
+	</ParseAnimeListSet>
 
 </scraper>
