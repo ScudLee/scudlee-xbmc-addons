@@ -1,3 +1,15 @@
+2.3.0
+Changed: New ratings format
+Changed: Plot filtering improved
+Changed: Minor genre handling tweaks
+Changed: Default search results display anidb id in unused language spot rather than in title
+Changed: Use uniqueids to store multiple ids
+Changed: updated icon
+Added: Option to use old rating format
+Added: Option to not get ratings
+Added: Audience tagging (kodomo, shounen, josei, etc.)
+Fixed: TVDB details/artwork scraping (using v2 api)
+
 2.2.0
 Fixed: Genre parsing
 Fixed: Minor plot handling fixes
