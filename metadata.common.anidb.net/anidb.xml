@@ -723,7 +723,7 @@
 				<expression repeat="yes" noclean="1,2">([^\r\n]*)(?:(\r?\n)[ \t\r\n]*)?</expression>
 			</RegExp>
 			<RegExp input="$$6" output="\1" dest="7"><!-- Capture leading "source" line -->
-				<expression noclean="1">(?i)^\*\s*([^\r\n]*)[\r\n]+</expression>
+				<expression clear="yes" noclean="1">(?i)^\*\s*([^\r\n]*)[\r\n]+</expression>
 			</RegExp>
 			<RegExp input="$$6" output="\2" dest="6"><!-- Capture the rest -->
 				<expression noclean="1">(?i)^\*([^\r\n]*)[\r\n]+(.*)</expression>
