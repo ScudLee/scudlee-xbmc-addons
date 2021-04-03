@@ -1,0 +1,341 @@
+# Kodi Media Center language file
+# Addon Name: AniDB.net [MOD]
+# Addon id: metadata.tvshows.anidb.net.mod
+# Addon Provider: scudlee
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: https://github.com/ScudLee/scudlee-xbmc-addons\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Unknown\n"
+"Language-Team: English (http://www.transifex.com/projects/p/xbmc-addons/language/en/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# General
+
+msgctxt "#30000"
+msgid "Use Google Search"
+msgstr ""
+
+msgctxt "#30001"
+msgid "Anime list URL"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Anime mapping URL"
+msgstr ""
+
+msgctxt "#30003"
+msgid "Use personal anime mapping"
+msgstr ""
+
+msgctxt "#30004"
+msgid "Personal anime mapping URL"
+msgstr ""
+
+msgctxt "#30005"
+msgid "Store anime ID from"
+msgstr ""
+
+msgctxt "#30006"
+msgid "Delay Parameter"
+msgstr ""
+
+msgctxt "#30007"
+msgid "Use Google to perform the initial title search. Not as reliable as the default search."
+msgstr ""
+
+msgctxt "#30008"
+msgid "Location of the animetitles.xml used in the title search. A more up-to-date version can be found direct from AniDB.net if needed."
+msgstr ""
+
+msgctxt "#30009"
+msgid "Location of the anime-list.xml that maps shows between AniDB.net and thetvdb.com."
+msgstr ""
+
+msgctxt "#30010"
+msgid "Location of your personal mapping list. Must be a URL (with protocol). Direct folder locations won't work."
+msgstr ""
+
+msgctxt "#30011"
+msgid "Controls the amount of "busywork" the scraper performs when used. Increase this if you find yourself getting banned a lot. (100+ at least)."
+msgstr ""
+
+msgctxt "#30012"
+msgid "General"
+msgstr ""
+
+msgctxt "#30013"
+msgid "Anime Mapping Files"
+msgstr ""
+
+
+# AniDB
+
+msgctxt "#30100"
+msgid "Use official name instead of main name"
+msgstr ""
+
+msgctxt "#30101"
+msgid "Official name language"
+msgstr ""
+
+msgctxt "#30102"
+msgid "Enable prequel lookup"
+msgstr ""
+
+msgctxt "#30103"
+msgid "Alternative prequel link type"
+msgstr ""
+
+msgctxt "#30104"
+msgid "Return only single Animation studio"
+msgstr ""
+
+msgctxt "#30105"
+msgid "Map specials at the end of episode list"
+msgstr ""
+
+msgctxt "#30106"
+msgid "Map specials inside of episode list"
+msgstr ""
+
+msgctxt "#30107"
+msgid "Treat Secondary characters cast as Main"
+msgstr ""
+
+msgctxt "#30108"
+msgid "Minimum Genre weight"
+msgstr ""
+
+msgctxt "#30109"
+msgid "Number of Genres returned"
+msgstr ""
+
+msgctxt "#30110"
+msgid "Rating type"
+msgstr ""
+
+msgctxt "#30111"
+msgid "Use tags"
+msgstr ""
+
+msgctxt "#30112"
+msgid "Auto-add anime tags to all shows"
+msgstr ""
+
+msgctxt "#30113"
+msgid "Use these tags (separate with a semi-colon)"
+msgstr ""
+
+msgctxt "#30114"
+msgid "Add tags from AniDB"
+msgstr ""
+
+msgctxt "#30115"
+msgid "Minimum Approval for tags"
+msgstr ""
+
+msgctxt "#30116"
+msgid "Include spoiler tags"
+msgstr ""
+
+msgctxt "#30117"
+msgid "Add source-based tags"
+msgstr ""
+
+msgctxt "#30118"
+msgid "Source tag prefix"
+msgstr ""
+
+msgctxt "#30119"
+msgid "Add location-based tags"
+msgstr ""
+
+msgctxt "#30120"
+msgid "Location tag prefix"
+msgstr ""
+
+msgctxt "#30121"
+msgid "Allow Adult genres"
+msgstr ""
+
+msgctxt "#30122"
+msgid "Never"
+msgstr ""
+
+msgctxt "#30123"
+msgid "Only for 18+ Restricted titles"
+msgstr ""
+
+msgctxt "#30124"
+msgid "Always"
+msgstr ""
+
+msgctxt "#30125"
+msgid "Only use the most precise locations"
+msgstr ""
+
+msgctxt "#30126"
+msgid "Add target audience-based tags"
+msgstr ""
+
+msgctxt "#30127"
+msgid "Target audience tag prefix"
+msgstr ""
+
+msgctxt "#30128"
+msgid "Keep source line in plot"
+msgstr ""
+
+msgctxt "#30129"
+msgid "Fetch ratings"
+msgstr ""
+
+msgctxt "#30130"
+msgid "Pre-Krypton ratings"
+msgstr ""
+
+msgctxt "#30131"
+msgid "This determines the title displayed for the show."
+msgstr ""
+
+msgctxt "#30132"
+msgid "Which language to use for the official name, and also episode titles and plots. The main title will be used if no official title exists in the language chosen. Episode details will fallback to English."
+msgstr ""
+
+msgctxt "#30133"
+msgid "Only used if the show is not in the mapping list. Unlikely you should need to change this."
+msgstr ""
+
+msgctxt "#30134"
+msgid "In rare cases multiple studios may be returned."
+msgstr ""
+
+msgctxt "#30135"
+msgid "Include secondary characters in the main cast for the show."
+msgstr ""
+
+msgctxt "#30136"
+msgid "Where to list special episodes that don't have positional information."
+msgstr ""
+
+msgctxt "#30137"
+msgid "Whether to use positional information at all. (These two settings are independent.)"
+msgstr ""
+
+msgctxt "#30138"
+msgid "Keeps the \"Based on...\" line (or similar) as the last line of the plot."
+msgstr ""
+
+msgctxt "#30139"
+msgid "Categories are weighted on AniDB by how well they fit the show. Higher weight = Better fit."
+msgstr ""
+
+msgctxt "#30140"
+msgid "Maximum number of genres returned per show. Actual amount may be lower."
+msgstr ""
+
+msgctxt "#30141"
+msgid "Whether to fetch anidb ratings or not."
+msgstr ""
+
+msgctxt "#30142"
+msgid "Either Average or Weighted. Weighted takes into account ballot-stuffing, so is preferred."
+msgstr ""
+
+msgctxt "#30143"
+msgid "Use the old rating format (for Gotham or older)."
+msgstr ""
+
+msgctxt "#30144"
+msgid "Whether to allow the scraper to automatically add tags for your shows."
+msgstr ""
+
+msgctxt "#30145"
+msgid "Whether to add a specific set of tags to every show."
+msgstr ""
+
+msgctxt "#30146"
+msgid "The specific set of tags to use. The default is just \"Anime\", but you could for example use: Anime;Animation;Japanese to add all three tags."
+msgstr ""
+
+msgctxt "#30147"
+msgid "Add tags based on any \"Original Work\" categories."
+msgstr ""
+
+msgctxt "#30148"
+msgid "Prefix to add to source-based tags (to aid in sorting). Remember to include a space at the end."
+msgstr ""
+
+msgctxt "#30149"
+msgid "Add tags based on any \"Location\" categories."
+msgstr ""
+
+msgctxt "#30150"
+msgid "Prefix to add to location-based tags (to aid in sorting). Remember to include a space at the end."
+msgstr ""
+
+msgctxt "#30151"
+msgid "Disable to add the entire chain of locations as tags. e.g. Earth->Asia->Japan->Tokyo->Akihabara"
+msgstr ""
+
+msgctxt "#30152"
+msgid "Add tags based on any \"Target Audience\" categories."
+msgstr ""
+
+msgctxt "#30153"
+msgid "Prefix to add to target audience-based tags (to aid in sorting). Remember to include a space at the end."
+msgstr ""
+
+msgctxt "#30154"
+msgid "AniDB"
+msgstr ""
+
+msgctxt "#30155"
+msgid "Information"
+msgstr ""
+
+msgctxt "#30156"
+msgid "Genres"
+msgstr ""
+
+msgctxt "#30157"
+msgid "Ratings"
+msgstr ""
+
+msgctxt "#30158"
+msgid "Tags"
+msgstr ""
+
+
+# TheTVDB
+
+msgctxt "#30200"
+msgid "Enable fanarts"
+msgstr ""
+
+msgctxt "#30202"
+msgid "Continue lookup if no fanart found"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Enable extra episode details"
+msgstr ""
+
+msgctxt "#30204"
+msgid "Whether to download fanart or not."
+msgstr ""
+
+msgctxt "#30205"
+msgid "Whether to get episode plot and thumbnails from TVDB."
+msgstr ""
+
+msgctxt "#30206"
+msgid "TheTVDB"
+msgstr ""

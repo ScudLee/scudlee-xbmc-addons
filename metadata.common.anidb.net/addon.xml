@@ -10,8 +10,13 @@
              library="anidb.xml"
              cachepersistence="24:00"/>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">AniDB.net [MOD] scraper library</summary>
-    <description lang="en">Download anime show information from AniDB.net</description>
+    <summary lang="en_GB">AniDB.net [MOD] scraper library</summary>
+    <description lang="en_GB">Download anime show information from AniDB.net</description>
     <platform>all</platform>
+    <forum>https://forum.kodi.tv/showthread.php?tid=142835</forum>
+    <source>https://github.com/ScudLee/scudlee-xbmc-addons/tree/master/metadata.tvshows.anidb.net.mod</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
   </extension>
 </addon>
