@@ -23,6 +23,9 @@ Settings
 *   **Use Google Search** - Use Google to perform the initial title search.
     Not as reliable as the default search.
 
+*   **Delay parameter** - Controls the amount of "busywork" the scraper performs when used.
+    Increase this if you find yourself getting banned a lot. (100+ at least).
+
 *   **Anime list URL** - Location of the animetitles.xml used in the title search.
     A more up-to-date version can be found direct from AniDB.net if needed.
 
@@ -35,10 +38,7 @@ Settings
 *   **Personal anime mapping URL** - Location of your personal mapping list.
     Must be a URL (with protocol).  Direct folder locations won't work.
 
-*   **Delay parameter** - Controls the amount of "busywork" the scraper performs when used.
-    Increase this if you find yourself getting banned a lot. (100+ at least).
-
-### AniDB 1 ###
+### AniDB ###
 
 *   **Use official name instead of main name** - This determines the title displayed for the show.
 
@@ -61,8 +61,6 @@ Settings
     (These two settings are independent.)
 
 *   **Keep source line in plot** - Keeps the "Based on..." line (or similar) as the last line of the plot.
-
-### AniDB 2 ###
 
 *   **Minimum Genre weight** - Categories are weighted on AniDB by how well they fit the show.
     Higher weight = Better fit
